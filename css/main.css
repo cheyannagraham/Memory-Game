@@ -1,0 +1,11 @@
+#gameboard{
+    width:80%;
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    width:10vw;
+    height:25vh;
+    margin:10px;
+}

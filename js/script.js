@@ -1,9 +1,10 @@
 function fillBoard(){
     let gameBoard=$('#gameboard');
     let frag = $(document.createDocumentFragment());
+    let color = createBoard();
     
     for(let i=0;i<12;i++){
-        frag.append('<div class="card"></div>')
+        frag.append(`<div class="card" style="background:${color[i]}"></div>`)
     }
     
     gameBoard.append(frag);
@@ -16,9 +17,7 @@ function createBoard(){
     for( let i=0;i<12;i++){
         boardColor.push(color[randomNumber(color.length)]);
     }
-    
-    console.log(color);
-    console.log(boardColor);
+    return boardColor;
 }
 
 function randomNumber(m) {
@@ -28,6 +27,5 @@ function randomNumber(m) {
 
 $(function() {
     fillBoard();
-    createBoard();
 });
 

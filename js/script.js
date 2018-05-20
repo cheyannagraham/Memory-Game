@@ -1,12 +1,12 @@
 function fillBoard(){
-    let gameBoard=document.querySelector('#gameboard');
+    let gameBoard=$('#gameboard');
+    let frag = $(document.createDocumentFragment());
     
     for(let i=0;i<12;i++){
-        const card = document.createElement('div');
-        card.innerHTML = 'class="card"';
-        gameBoard.appendChild(card);
-        
+        frag.append('<div class="card"></div>')        
     }
+    gameBoard.append(frag);
 }
-
-document.addEventListener('DOMContentLoaded',fillBoard);
+$(function() {
+    fillBoard();
+});

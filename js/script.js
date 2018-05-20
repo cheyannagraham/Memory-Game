@@ -1,14 +1,14 @@
 function fillBoard(){
     let gameBoard=$('#game-table');
     let frag = $(document.createDocumentFragment());
-    let color = createBoard();
+    let template = createBoard();
     let count = 0;
     
     for(let i=0;i<3;i++){
         const tr =$(document.createElement('tr'));
         tr.addClass('card-row');
         for(let r=0;r<4;r++){
-            tr.append(`<td><div class="card" style="background:${color[count]}"></div></td>`)
+            tr.append(`<td><div class="card" style="background:${template[count][0]}">${template[count][1]}</div></td>`)
             count++;
         }
         frag.append(tr);
@@ -20,12 +20,14 @@ function fillBoard(){
 
 function createBoard(){
     let color = 'blue green red purple pink orange yellow black gray white black magenta'.split(' ');
-    let boardColor = [];
+    let sym = '! @ # $ % ^ & * ( ) { } < > ~'.split(' ');
+    let boardTemplate = [];
     
     for( let i=0;i<12;i++){
-        boardColor.push(color[randomNumber(color.length)]);
+        boardTemplate.push([color[randomNumber(color.length)],sym[randomNumber(sym.length)]]);
     }
-    return boardColor;
+    console.log(boardTemplate);
+    return boardTemplate;
 }
 
 

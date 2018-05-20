@@ -20,7 +20,7 @@ function fillBoard(){
 
 function createBoard(){
     let color = 'blue green red purple pink orange yellow black gray black magenta'.split(' ');
-    let sym = '! @ # $ % ^ & * ( ) { } < > ~'.split(' ');
+    let sym = '! @ # $ % ^ & * ( ) { } < > ~ / | [ ] ? ; :'.split(' ');
     let boardTemplate = [];
     
     for( let i=0;i<12;i++){

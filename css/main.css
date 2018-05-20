@@ -1,11 +1,21 @@
 #gameboard{
-    width:80%;
-    display:flex;
-    flex-wrap: wrap;
+    width:100%;
+    background:navy;
+
+}
+
+#game-table {
+    width:100%;
 }
 
 .card {
-    width:10vw;
-    height:25vh;
+    min-width:20%;
+    max-width: 150px;
+    height:20vh;
     margin:10px;
+    border-radius:5px;
+}
+
+.card-row {
+
 }

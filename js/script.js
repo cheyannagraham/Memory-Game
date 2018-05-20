@@ -8,7 +8,7 @@ function fillBoard(){
         const tr =$(document.createElement('tr'));
         tr.addClass('card-row');
         for(let r=0;r<4;r++){
-            tr.append(`<td><div class="card" style="background:${template[count][0]}">${template[count][1]}</div></td>`)
+            tr.append(`<td><div class="card" style="color:${template[count][0]}">${template[count][1]}</div></td>`)
             count++;
         }
         frag.append(tr);
@@ -19,7 +19,7 @@ function fillBoard(){
 
 
 function createBoard(){
-    let color = 'blue green red purple pink orange yellow black gray white black magenta'.split(' ');
+    let color = 'blue green red purple pink orange yellow black gray black magenta'.split(' ');
     let sym = '! @ # $ % ^ & * ( ) { } < > ~'.split(' ');
     let boardTemplate = [];
     

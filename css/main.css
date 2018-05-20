@@ -1,19 +1,33 @@
+html,body{
+    width:100vw;
+    height: 100vh;
+}
+* {
+    padding: 0;
+    margin: 0;
+}
+
 #gameboard{
-    width:100%;
     background:navy;
+
 
 }
 
 #game-table {
-    width:100%;
+    margin:auto;
 }
 
 .card {
-    min-width:20%;
+    width:15vw;
     max-width: 150px;
-    height:20vh;
+    height:15vw;
     margin:10px;
     border-radius:5px;
+    background:white;
+    font-size: 3em ;
+    display:flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .card-row {

@@ -32,13 +32,20 @@ function createBoard(){
 
 
 function randomNumber(m) {
-    //helper code (2018https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random )
+    //helper code (2018-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random )
     return Math.floor(Math.random() * Math.floor(m));
+}
+
+function count(){
+    let c = 1;
+    return function(){
+        return c++;
+    }
 }
 
 function flip(ev){
         $(ev.target).css('transform','scalex(0)');
-        
+
         setTimeout(function(){
           $(ev.target).toggleClass('hide');
           $(ev.target).prev('.card').toggleClass('hide');
@@ -54,7 +61,10 @@ function findMatch(){
 }
 
 function events(){
+    let countCards = count();
     $('.card-cover').click(function(ev){
+        let cardsFlipped = countCards();
+        console.log(cardsFlipped);
         flip(ev);
         findMatch();
     });
@@ -65,8 +75,6 @@ function events(){
 $(function() {
     fillBoard();
     events();
-
-
 });
 
 // TODO: ADD click event and open&hide class & 'turn'

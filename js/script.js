@@ -8,7 +8,7 @@ function fillBoard(){
         const tr =$(document.createElement('tr'));
         tr.addClass('card-row');
         for(let r=0;r<4;r++){
-            tr.append(`<td><div class="card" style="color:${template[count][0]}">${template[count][1]}</div></td>`)
+            tr.append(`<td><div class="card card-face hide" style="color:${template[count][0]}">${template[count][1]}</div><div class="card card-cover"></div></td>`)
             count++;
         }
         frag.append(tr);
@@ -36,8 +36,26 @@ function randomNumber(m) {
     return Math.floor(Math.random() * Math.floor(m));
 }
 
+function flip(ev){
+        $(ev.target).css('transform','scalex(0)');
+        
+        setTimeout(function(){
+          $(ev.target).toggleClass('hide');
+          $(ev.target).prev('.card').toggleClass('hide');
+          
+          setTimeout(function(){
+            $(ev.target).prev('.card').css('transform','scalex(1)');
+          },50);
+        },500); 
+}
+
 
 $(function() {
     fillBoard();
+
+    $('.card-cover').click(function(ev){
+        flip(ev);
+    });
 });
 
+// TODO: ADD click event and open&hide class & 'turn'

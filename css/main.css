@@ -23,14 +23,23 @@ html,body{
     height:15vw;
     margin:10px;
     border-radius:5px;
-    background:white;
     font-size: 3em;
     font-weight: bold;
     display:flex;
     align-items: center;
     justify-content: center;
+    transition:transform 0.5s ease;
 }
 
-.card-row {
+.card-cover {
+    background:green;
+}
 
+.card-face {
+    transform: scalex(0);
+    background: white;
+}
+
+.hide {
+    display:none;
 }

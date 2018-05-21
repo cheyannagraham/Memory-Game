@@ -49,13 +49,24 @@ function flip(ev){
         },500); 
 }
 
+function findMatch(){
+
+}
+
+function events(){
+    $('.card-cover').click(function(ev){
+        flip(ev);
+        findMatch();
+    });
+
+}
+
 
 $(function() {
     fillBoard();
+    events();
 
-    $('.card-cover').click(function(ev){
-        flip(ev);
-    });
+
 });
 
 // TODO: ADD click event and open&hide class & 'turn'

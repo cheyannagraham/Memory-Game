@@ -62,11 +62,18 @@ function findMatch(){
 
 function events(){
     let countCards = count();
+
     $('.card-cover').click(function(ev){
-        let cardsFlipped = countCards();
-        console.log(cardsFlipped);
+    let cardsFlipped = countCards();        
+
+        console.log('cards',cardsFlipped);
+        
+        if(cardsFlipped == 2){
+            countCards = count();
+            findMatch();
+        }
+
         flip(ev);
-        findMatch();
     });
 
 }

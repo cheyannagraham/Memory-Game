@@ -36,13 +36,6 @@ function randomNumber(m) {
     return Math.floor(Math.random() * Math.floor(m));
 }
 
-function count(){
-    let c = 1;
-    return function(){
-        return c++;
-    }
-}
-
 function flip(ev){
         $(ev.target).css('transform','scalex(0)');
 
@@ -61,16 +54,14 @@ function findMatch(){
 }
 
 function events(){
-    let countCards = count();
+    let pair = [];
 
     $('.card-cover').click(function(ev){
-    let cardsFlipped = countCards();        
-
-        console.log('cards',cardsFlipped);
+        pair.push(ev.target);
         
-        if(cardsFlipped == 2){
-            countCards = count();
-            findMatch();
+        if(pair.length ==2){
+            // findMatch(pair);
+            pair = [];
         }
 
         flip(ev);

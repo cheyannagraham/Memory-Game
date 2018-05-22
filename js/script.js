@@ -19,8 +19,10 @@ function fillBoard(){
 
 
 function createBoard(){
-    let color = 'blue green red purple pink orange yellow black gray black magenta'.split(' ');
-    let sym = '! @ # $ % ^ & * ( ) { } < > ~ / | [ ] ? ; :'.split(' ');
+    // let color = 'blue green red purple pink orange yellow black gray black magenta'.split(' ');
+    // let sym = '! @ # $ % ^ & * ( ) { } < > ~ / | [ ] ? ; :'.split(' ');
+    let color = 'blue green'.split(' ');
+    let sym = '! @'.split(' ');
     let boardTemplate = [];
     
     for( let i=0;i<12;i++){
@@ -48,21 +50,38 @@ function flip(ev){
         },300); 
 }
 
+function reverseFlip(covers){
+    covers.forEach(function(card){
+
+        setTimeout(function(){
+            $(card).prev('.card').css('transform','scalex(0)');
+            
+            setTimeout(function(){
+                $(card).prev('.card').toggleClass('hide');
+                $(card).toggleClass('hide');
+                $(card).css('transform','scalex(1)');
+            },300);
+        },1200);
+    });
+}
+
 function events(){
     let pair = [];
+    let flipped=[];
 
     $('#game-table').on('click','.card-cover',function(ev){
         pair.push($(ev.target).prev('.card-face').attr('data-card'));
+        flipped.push(ev.target)
 
         if(pair.length === 2){
 
             if(pair[0] != pair[1]){
                 console.log('no match');
+                reverseFlip(flipped);
             }
-
             pair = [];
+            flipped = [];
         }
-
         flip(ev);
     });
 
@@ -74,4 +93,4 @@ $(function() {
     events();
 });
 
-// complete findmatch();
+//create actual matches, score, timer

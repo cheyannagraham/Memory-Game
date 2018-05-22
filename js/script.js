@@ -19,16 +19,32 @@ function fillBoard(){
 
 
 function createBoard(){
-    // let color = 'blue green red purple pink orange yellow black gray black magenta'.split(' ');
-    // let sym = '! @ # $ % ^ & * ( ) { } < > ~ / | [ ] ? ; :'.split(' ');
-    let color = 'blue green'.split(' ');
-    let sym = '! @'.split(' ');
+    let color = 'blue green red purple pink orange yellow black gray black magenta'.split(' ');
+    let sym = '! @ # $ % ^ & * ( ) { } < > ~ / | [ ] ? ; :'.split(' ');
     let boardTemplate = [];
     
-    for( let i=0;i<12;i++){
-        boardTemplate.push([color[randomNumber(color.length)],sym[randomNumber(sym.length)]]);
+    for( let i=0;i<6;i++){
+            boardTemplate.push([color[randomNumber(color.length)],sym[randomNumber(sym.length)]]);
     }
-    return boardTemplate;
+    boardTemplate.push(...boardTemplate);
+    const b = [...boardTemplate];
+    const board = shuffleBoard(b);
+
+    return board;
+}
+
+
+function shuffleBoard(boardTemplate){
+    let shuffled = [];
+    const len = boardTemplate.length;
+    
+    for(let i = 0; i < len; i++){
+        let randNum=randomNumber(boardTemplate.length);
+            shuffled.push(boardTemplate[randNum]);
+            boardTemplate.splice(randNum,1);
+    }
+
+    return shuffled;
 }
 
 
@@ -36,6 +52,7 @@ function randomNumber(m) {
     //helper code (2018-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random )
     return Math.floor(Math.random() * Math.floor(m));
 }
+
 
 function flip(ev){
         $(ev.target).css('transform','scalex(0)');
@@ -49,6 +66,7 @@ function flip(ev){
           },50);
         },300); 
 }
+
 
 function reverseFlip(covers){
     covers.forEach(function(card){
@@ -64,6 +82,7 @@ function reverseFlip(covers){
         },1200);
     });
 }
+
 
 function events(){
     let pair = [];
@@ -81,6 +100,7 @@ function events(){
             }
             pair = [];
             flipped = [];
+        
         }
         flip(ev);
     });

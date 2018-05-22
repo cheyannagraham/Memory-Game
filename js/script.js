@@ -56,11 +56,11 @@ function findMatch(){
 function events(){
     let pair = [];
 
-    $('.card-cover').click(function(ev){
+    $('#game-table').on('click','.card-cover',function(ev){
         pair.push(ev.target);
-        
+
         if(pair.length ==2){
-            // findMatch(pair);
+            findMatch(pair);
             pair = [];
         }
 

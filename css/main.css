@@ -28,7 +28,7 @@ html,body{
     display:flex;
     align-items: center;
     justify-content: center;
-    transition:transform 0.5s ease;
+    transition:transform 0.3s ease;
 }
 
 .card-cover {

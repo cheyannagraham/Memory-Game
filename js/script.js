@@ -8,7 +8,7 @@ function fillBoard(){
         const tr =$(document.createElement('tr'));
         tr.addClass('card-row');
         for(let r=0;r<4;r++){
-            tr.append(`<td><div class="card card-face hide" style="color:${template[count][0]}">${template[count][1]}</div><div class="card card-cover"></div></td>`)
+            tr.append(`<td><div data-card="${template[count][0]}${template[count][1]}" class="card card-face hide" style="color:${template[count][0]}">${template[count][1]}</div><div class="card card-cover"></div></td>`)
             count++;
         }
         frag.append(tr);
@@ -26,7 +26,6 @@ function createBoard(){
     for( let i=0;i<12;i++){
         boardTemplate.push([color[randomNumber(color.length)],sym[randomNumber(sym.length)]]);
     }
-    console.log(boardTemplate);
     return boardTemplate;
 }
 
@@ -46,21 +45,21 @@ function flip(ev){
           setTimeout(function(){
             $(ev.target).prev('.card').css('transform','scalex(1)');
           },50);
-        },500); 
-}
-
-function findMatch(){
-
+        },300); 
 }
 
 function events(){
     let pair = [];
 
     $('#game-table').on('click','.card-cover',function(ev){
-        pair.push(ev.target);
+        pair.push($(ev.target).prev('.card-face').attr('data-card'));
 
-        if(pair.length ==2){
-            findMatch(pair);
+        if(pair.length === 2){
+
+            if(pair[0] != pair[1]){
+                console.log('no match');
+            }
+
             pair = [];
         }
 
@@ -75,4 +74,4 @@ $(function() {
     events();
 });
 
-// TODO: ADD click event and open&hide class & 'turn'
+// complete findmatch();

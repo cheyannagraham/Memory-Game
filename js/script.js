@@ -1,14 +1,15 @@
-function fillBoard(){
+function fillBoard(template){
     let gameBoard=$('#game-table');
     let frag = $(document.createDocumentFragment());
-    let template = createBoard();
     let count = 0;
+    const [r,c] = findRC(template.length);
     
-    for(let i=0;i<3;i++){
+    for(let i=0; i < r; i++){
         const tr =$(document.createElement('tr'));
         tr.addClass('card-row');
-        for(let r=0;r<4;r++){
-            tr.append(`<td><div data-card="${template[count][0]}${template[count][1]}" class="card card-face hide" style="color:${template[count][0]}">${template[count][1]}</div><div class="card card-cover"></div></td>`)
+        
+        for(let j=0; j < c; j++){
+            tr.append(`<td><div data-card="${template[count][0]}${template[count][1]}" class="card card-face hide unsolved" style="color:${template[count][0]}">${template[count][1]}</div><div class="card card-cover"></div></td>`)
             count++;
         }
         frag.append(tr);
@@ -18,19 +19,28 @@ function fillBoard(){
 }
 
 
-function createBoard(){
+function findRC(cards){
+    //get rows & columns
+    const rc = Math.sqrt(cards);
+    if(cards % rc ===0){
+        return [rc,rc];
+    }
+    
+
+}
+
+
+function createBoard(tiles){
     let color = 'blue green red purple pink orange yellow black gray black magenta'.split(' ');
     let sym = '! @ # $ % ^ & * ( ) { } < > ~ / | [ ] ? ; :'.split(' ');
     let boardTemplate = [];
     
-    for( let i=0;i<6;i++){
+    for( let i=0; i < tiles/2 ;i++){
             boardTemplate.push([color[randomNumber(color.length)],sym[randomNumber(sym.length)]]);
     }
     boardTemplate.push(...boardTemplate);
-    const b = [...boardTemplate];
-    const board = shuffleBoard(b);
+    fillBoard(shuffleBoard(boardTemplate));
 
-    return board;
 }
 
 
@@ -84,7 +94,13 @@ function reverseFlip(covers){
 }
 
 
-function events(){
+function gamePlay(){
+    const tiles = 4;
+    createBoard(tiles);
+}
+
+
+function cardClick(){
     let pair = [];
     let flipped=[];
 
@@ -98,19 +114,26 @@ function events(){
                 console.log('no match');
                 reverseFlip(flipped);
             }
+            else if(pair[0] === pair[1]){
+                flipped.forEach(function(el){
+                    $(el).prev('.card-face').removeClass('unsolved');
+                });
+            }
             pair = [];
             flipped = [];
-        
         }
         flip(ev);
+        if($('.unsolved').length===0){
+            alert("You Won!");
+        }
     });
 
 }
 
 
 $(function() {
-    fillBoard();
-    events();
+    cardClick();
+    gamePlay();
 });
 
 //create actual matches, score, timer

@@ -1,5 +1,7 @@
 function fillBoard(template){
     let gameBoard=$('#game-table');
+    gameBoard.empty();
+    
     let frag = $(document.createDocumentFragment());
     let count = 0;
     const [r,c] = findRC(template.length);
@@ -100,6 +102,11 @@ function gamePlay(){
 }
 
 
+function replay(){
+    $('#replay-container').removeClass('hide');
+}
+
+
 function cardClick(){
     let pair = [];
     let flipped=[];
@@ -124,7 +131,9 @@ function cardClick(){
         }
         flip(ev);
         if($('.unsolved').length===0){
-            alert("You Won!");
+            replay();
+            
+            // Pr
         }
     });
 
@@ -134,6 +143,14 @@ function cardClick(){
 $(function() {
     cardClick();
     gamePlay();
+    events();
 });
 
-//create actual matches, score, timer
+function events(){
+    $('#replay-button').click(function(ev){
+        gamePlay;
+        $('#replay-container').addClass('hide');
+    });
+}
+
+//score, timer, replay or level up options

@@ -4,7 +4,7 @@ function fillBoard(template){
     
     let frag = $(document.createDocumentFragment());
     let count = 0;
-    const [r,c] = findRC(template.length);
+    const [r,c] = findRC();
     
     for(let i=0; i < r; i++){
         const tr =$(document.createElement('tr'));
@@ -21,23 +21,35 @@ function fillBoard(template){
 }
 
 
-function findRC(cards){
+function findRC(){
     //get rows & columns
-    const rc = Math.sqrt(cards);
-    if(cards % rc ===0){
-        return [rc,rc];
+    const tSize = Number($('#game-table').attr('data-size'));
+    const sqrt = Math.sqrt(tSize);
+        
+    if(tSize % sqrt === 0){
+        return [sqrt,sqrt];
+        
+    }else{
+        let ratios = {}
+        const start = (tSize/2)-1;
+        
+        for (let j = start; j > 0; j--){
+            if (tSize%j ===0){
+            ratios[`${j-(tSize/j)}`] = [j,tSize/j];
+            }
+}
+    return(ratios[Math.min(...Object.keys(ratios).filter(x => x > 0))]);
     }
-    
-
 }
 
 
-function createBoard(tiles){
+function createBoard(){
+    let matches = Number($('#game-table').attr('data-size'))/2;
     let color = 'blue green red purple pink orange yellow black gray black magenta'.split(' ');
     let sym = '! @ # $ % ^ & * ( ) { } < > ~ / | [ ] ? ; :'.split(' ');
     let boardTemplate = [];
     
-    for( let i=0; i < tiles/2 ;i++){
+    for( let i=0; i < matches; i++){
             boardTemplate.push([color[randomNumber(color.length)],sym[randomNumber(sym.length)]]);
     }
     boardTemplate.push(...boardTemplate);
@@ -97,8 +109,7 @@ function reverseFlip(covers){
 
 
 function gamePlay(){
-    const tiles = 4;
-    createBoard(tiles);
+    createBoard();
 }
 
 
@@ -132,8 +143,6 @@ function cardClick(){
         flip(ev);
         if($('.unsolved').length===0){
             replay();
-            
-            // Pr
         }
     });
 
@@ -148,8 +157,19 @@ $(function() {
 
 function events(){
     $('#replay-button').click(function(ev){
-        gamePlay;
+        gamePlay();
         $('#replay-container').addClass('hide');
+    });
+
+
+    $('#level-up-button').click(function(ev){
+        let size = $('#game-table').attr('data-size');
+        $('#game-table').attr('data-size',Number(size)+4);
+        gamePlay();
+        $('#replay-container').addClass('hide');
+        
+
+
     });
 }
 

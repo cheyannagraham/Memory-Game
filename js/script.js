@@ -110,8 +110,10 @@ function reverseFlip(covers){
 
 function gamePlay(){
     createBoard();
+
     $('table').one('click',timer);
     $('#timer').text('00:00');
+    $('#score').text('***');
 }
 
 
@@ -141,6 +143,9 @@ function replay(){
 function cardClick(){
     let pair = [];
     let flipped=[];
+    let turns = 0;
+    const CARDS = Number($('#game-table').attr('data-size'));
+    let score = $('#score');
 
     $('#game-table').on('click','.card-cover',function(ev){
         pair.push($(ev.target).prev('.card-face').attr('data-card'));
@@ -149,33 +154,47 @@ function cardClick(){
         if(pair.length === 2){
 
             if(pair[0] != pair[1]){
-                console.log('no match');
                 reverseFlip(flipped);
+                turns++;
             }
-            
+
             else if(pair[0] === pair[1]){
                 flipped.forEach(function(el){
                     $(el).prev('.card-face').removeClass('unsolved');
                 });
             }
+            console.log(turns,'turns');
 
             pair = [];
             flipped = [];
         }
 
         flip(ev);
+        
+        //score ratings
+        if(turns <= (CARDS/4)*3){
+            score.text('***');
+        }
+        
+        else if(turns > CARDS){
+            score.text('*');
+        }
+        
+        else{
+            score.text('**');
+        }
 
         if($('.unsolved').length===0){
             replay();
+            turns = 0;
         }
     });
-
 }
 
 
 $(function() {
-    cardClick();
     gamePlay();
+    cardClick();
     events();
 });
 

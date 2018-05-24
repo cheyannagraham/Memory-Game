@@ -52,9 +52,9 @@ function createBoard(){
     for( let i=0; i < matches; i++){
             boardTemplate.push([color[randomNumber(color.length)],sym[randomNumber(sym.length)]]);
     }
+
     boardTemplate.push(...boardTemplate);
     fillBoard(shuffleBoard(boardTemplate));
-
 }
 
 
@@ -124,9 +124,11 @@ function timer(){
         t.setMinutes(count/60);
         $('#timer').text(`${t.getMinutes().toLocaleString('en-us',{minimumIntegerDigits:2})}:${t.getSeconds().toLocaleString('en-us',{minimumIntegerDigits:2})}`);
         count ++;
+
+        if($('.unsolved').length===0){
+            window.clearInterval(timer);
+        }
     }
-
-
 }
 
 
@@ -149,15 +151,19 @@ function cardClick(){
                 console.log('no match');
                 reverseFlip(flipped);
             }
+            
             else if(pair[0] === pair[1]){
                 flipped.forEach(function(el){
                     $(el).prev('.card-face').removeClass('unsolved');
                 });
             }
+
             pair = [];
             flipped = [];
         }
+
         flip(ev);
+
         if($('.unsolved').length===0){
             replay();
         }
@@ -171,6 +177,7 @@ $(function() {
     gamePlay();
     events();
 });
+
 
 function events(){
     $('#replay-button').click(function(ev){
@@ -187,4 +194,4 @@ function events(){
     });
 }
 
-//score, timer, replay or level up options
+//score, timer

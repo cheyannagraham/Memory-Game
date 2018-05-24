@@ -110,6 +110,23 @@ function reverseFlip(covers){
 
 function gamePlay(){
     createBoard();
+    $('table').one('click',timer);
+}
+
+
+function timer(){
+    const timer = window.setInterval(time, 1000);
+    let count = 0;
+    let t = new Date();
+
+    function time() {
+        t.setSeconds(count);
+        t.setMinutes(count/60);
+        $('#timer').text(`${t.getMinutes().toLocaleString('en-us',{minimumIntegerDigits:2})}:${t.getSeconds().toLocaleString('en-us',{minimumIntegerDigits:2})}`);
+        count ++;
+    }
+
+
 }
 
 
@@ -167,9 +184,6 @@ function events(){
         $('#game-table').attr('data-size',Number(size)+4);
         gamePlay();
         $('#replay-container').addClass('hide');
-        
-
-
     });
 }
 

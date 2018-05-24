@@ -7,15 +7,17 @@
         <script  src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
         <script src="js/script.js"></script>
         <meta charset="utf-8">
-        <meta name="viewort" content="width=device-width,initial-scale=1.0">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
         <title>Memory Symbols</title>
     </head>
 
     <body>
         <header id='main-header'>
             <h1>Character Match</h1>
-            <hr>
         </header>
+        
+        <hr>
+
         <main id="content">
             <aside id='stats-container'>
 
@@ -32,7 +34,7 @@
 
             <section id="gameboard">
 
-                <table id="game-table" data-size="36">
+                <table id="game-table" data-size="4">
 
                 </table>
             </section>
@@ -41,14 +43,10 @@
 
         <aside id="replay-container" class="hide">
             <h1>Winner!</h1>
-            
-            <label id='replay-label'>
+
                 <button id='replay-button'>Play Again!</button>
-            </label>
-            
-            <label id='level-up-label'>
+
                 <button id='level-up-button'>Level Up!</button>
-            </label>
 
         </aside>
     </body>

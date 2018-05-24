@@ -109,6 +109,7 @@ function reverseFlip(covers){
 
 
 function gamePlay(){
+    
     createBoard();
 
     $('table').one('click',timer);
@@ -148,12 +149,11 @@ function cardClick(){
     const CARDS = Number($('#game-table').attr('data-size'));
     let score = $('#score');
     let moves = 0;
+    let games = 0;
 
     $('#game-table').on('click','.card-cover',function(ev){
         pair.push($(ev.target).prev('.card-face').attr('data-card'));
         flipped.push(ev.target)
-
-
 
         if(pair.length === 2){
             moves++;
@@ -193,6 +193,9 @@ function cardClick(){
         if($('.unsolved').length===0){
             replay();
             turns = 0;
+            moves = 0;
+            games++;
+            $('#games').text(games);
         }
     });
 }

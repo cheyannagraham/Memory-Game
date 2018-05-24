@@ -11,7 +11,7 @@ function fillBoard(template){
         tr.addClass('card-row');
         
         for(let j=0; j < c; j++){
-            tr.append(`<td><div data-card="${template[count][0]}${template[count][1]}" class="card card-face hide unsolved" style="color:${template[count][0]}">${template[count][1]}</div><div class="card card-cover"></div></td>`)
+            tr.append(`<td class="card-td"><div data-card="${template[count][0]}${template[count][1]}" class="card card-face hide unsolved" style="color:${template[count][0]}">${template[count][1]}</div><div class="card card-cover"></div></td>`)
             count++;
         }
         frag.append(tr);
@@ -35,10 +35,10 @@ function findRC(){
         
         for (let j = start; j > 0; j--){
             if (tSize%j ===0){
-            ratios[`${j-(tSize/j)}`] = [j,tSize/j];
+            ratios[`${Math.abs(j-(tSize/j))}`] = [j,tSize/j];
             }
 }
-    return(ratios[Math.min(...Object.keys(ratios).filter(x => x > 0))]);
+    return ratios[Math.min(...Object.keys(ratios))];
     }
 }
 

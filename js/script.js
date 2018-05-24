@@ -114,6 +114,7 @@ function gamePlay(){
     $('table').one('click',timer);
     $('#timer').text('00:00');
     $('#score').text('***');
+    $('#moves').text(0);
 }
 
 
@@ -146,12 +147,17 @@ function cardClick(){
     let turns = 0;
     const CARDS = Number($('#game-table').attr('data-size'));
     let score = $('#score');
+    let moves = 0;
 
     $('#game-table').on('click','.card-cover',function(ev){
         pair.push($(ev.target).prev('.card-face').attr('data-card'));
         flipped.push(ev.target)
 
+
+
         if(pair.length === 2){
+            moves++;
+            $('#moves').text(moves);
 
             if(pair[0] != pair[1]){
                 reverseFlip(flipped);

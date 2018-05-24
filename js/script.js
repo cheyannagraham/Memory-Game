@@ -111,12 +111,13 @@ function reverseFlip(covers){
 function gamePlay(){
     createBoard();
     $('table').one('click',timer);
+    $('#timer').text('00:00');
 }
 
 
 function timer(){
     const timer = window.setInterval(time, 1000);
-    let count = 0;
+    let count = 1;
     let t = new Date();
 
     function time() {

@@ -205,7 +205,6 @@ function events(){
         $('#replay-container').addClass('hide');
     });
 
-
     $('#level-up-button').click(function(ev){
         let size = $('#game-table').attr('data-size');
         $('#game-table').attr('data-size',Number(size)+4);
@@ -214,4 +213,14 @@ function events(){
     });
 }
 
-//score, timer
+// TODO:Show number of moves during game;
+//     create 'modal' for replay displaying stats
+//     restart button to start everything over;
+//     README
+//     Add unique functionality beyond the 
+//         minimum requirements (Implement a 
+//         leaderboard, store game state using 
+//         local storage, etc.)
+//     Implement additional optimizations that 
+//         improve the performance and user experience 
+//         of the game (keyboard shortcuts for gameplay, etc).

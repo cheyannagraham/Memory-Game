@@ -23,7 +23,6 @@ html,body{
     width:100%;
     min-height: 70vh;
     display:flex;
-    overflow-x:scroll;
 }
 
 #game-table {

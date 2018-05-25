@@ -215,11 +215,22 @@ function events(){
         $('#replay-container').addClass('hide');
     });
 
-    $('#level-up-button').click(function(ev){
+    $('.level-up-button').click(function(ev){
         let size = $('#game-table').attr('data-size');
         $('#game-table').attr('data-size',Number(size)+4);
         gamePlay();
         $('#replay-container').addClass('hide');
+    });
+
+    $('#level-down-button').click(function(ev){
+        let size = Number($('#game-table').attr('data-size'));
+        console.log(size);
+        
+        if(size > 4){
+            $('#game-table').attr('data-size',size-4);
+            gamePlay();
+            // $('#replay-container').addClass('hide');
+        }
     });
 
     $('#restart-button').click(function(ev){
@@ -229,7 +240,7 @@ function events(){
     $('#restart-game-button').click(function(ev){
         $('#restart-container').toggleClass('hide');
     });
-    
+
     $('#start-over-button').click(function(ev){
         $('#restart-container').toggleClass('hide');
     });

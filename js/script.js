@@ -1,3 +1,5 @@
+let timerStart = false;
+
 function fillBoard(template){
     let gameBoard=$('#game-table');
     gameBoard.empty();
@@ -110,29 +112,31 @@ function reverseFlip(covers){
 
 
 function gamePlay(){
-    
-    createBoard();
+    timerStart = false;
 
-    $('table').one('click',timer);
     $('#timer').text('00:00');
+    $('table').one('click',timer);
     $('#score').text('***');
     $('#moves').text(0);
+    createBoard();
 }
 
 
 function timer(){
     const timer = window.setInterval(time, 1000);
     let count = 1;
+    timerStart=true;
     let t = new Date();
 
     function time() {
-        t.setSeconds(count);
-        t.setMinutes(count/60);
-        $('#timer').text(`${t.getMinutes().toLocaleString('en-us',{minimumIntegerDigits:2})}:${t.getSeconds().toLocaleString('en-us',{minimumIntegerDigits:2})}`);
-        count ++;
-
-        if($('.unsolved').length===0){
+        if(!timerStart){
             window.clearInterval(timer);
+        }
+        else {
+            t.setSeconds(count);
+            t.setMinutes(count/60);
+            $('#timer').text(`${t.getMinutes().toLocaleString('en-us',{minimumIntegerDigits:2})}:${t.getSeconds().toLocaleString('en-us',{minimumIntegerDigits:2})}`);
+            count ++;
         }
     }
 }
@@ -191,11 +195,13 @@ function cardClick(){
             score.text('**');
         }
 
+        //game complete
         if($('.unsolved').length===0){
             replay();
             turns = 0;
             moves = 0;
             games++;
+            timerStart=false;
             $('#games').text(games);
         }
     });
@@ -217,6 +223,7 @@ function events(){
 
     $('.level-up-button').click(function(ev){
         let size = $('#game-table').attr('data-size');
+        
         $('#game-table').attr('data-size',Number(size)+4);
         gamePlay();
         $('#replay-container').addClass('hide');
@@ -229,25 +236,24 @@ function events(){
         if(size > 4){
             $('#game-table').attr('data-size',size-4);
             gamePlay();
-            // $('#replay-container').addClass('hide');
         }
+        
     });
 
-    $('#restart-button').click(function(ev){
+    $('#restart-button,#cancel-button').click(function(ev){
         $('#restart-container').toggleClass('hide');
     });
 
     $('#restart-game-button').click(function(ev){
         $('#restart-container').toggleClass('hide');
+        gamePlay();
     });
 
     $('#start-over-button').click(function(ev){
         $('#restart-container').toggleClass('hide');
+        
     });
 
-    $('#cancel-button').click(function(ev){
-        $('#restart-container').toggleClass('hide');
-    });
 }
 
 // TODO:Show number of moves during game;

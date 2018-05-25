@@ -154,9 +154,11 @@ function cardClick(){
     const CARDS = Number($('#game-table').attr('data-size'));
     let score = $('#score');
     let moves = 0;
-    let games = 0;
+    
 
     $('#game-table').on('click','.card-cover',function(ev){
+        let games = Number($('#games').text());
+    // }
         pair.push($(ev.target).prev('.card-face').attr('data-card'));
         flipped.push(ev.target)
 
@@ -232,16 +234,17 @@ function events(){
     $('#level-down-button').click(function(ev){
         let size = Number($('#game-table').attr('data-size'));
         console.log(size);
-        
+
         if(size > 4){
             $('#game-table').attr('data-size',size-4);
             gamePlay();
         }
-        
+
     });
 
     $('#restart-button,#cancel-button').click(function(ev){
         $('#restart-container').toggleClass('hide');
+        //'pause' timer when prompt shows up
     });
 
     $('#restart-game-button').click(function(ev){
@@ -251,7 +254,10 @@ function events(){
 
     $('#start-over-button').click(function(ev){
         $('#restart-container').toggleClass('hide');
-        
+        $('#games').text(0);
+        $('#game-table').attr('data-size',4);
+        gamePlay();
+
     });
 
 }

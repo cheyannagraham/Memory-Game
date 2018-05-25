@@ -158,7 +158,7 @@ function cardClick(){
 
     $('#game-table').on('click','.card-cover',function(ev){
         let games = Number($('#games').text());
-    // }
+
         pair.push($(ev.target).prev('.card-face').attr('data-card'));
         flipped.push(ev.target)
 
@@ -260,11 +260,26 @@ function events(){
 
     });
 
+    $('#show-stats').click(function(ev){
+        //pause mode
+    });
+    
+    $('#save-game').click(function(ev){
+        localStorage.setItem('gameboard',$('#gameboard').html());
+        alert('game-saved');
+    });
+    
+    $('#load-game').click(function(ev){
+        const table = localStorage.getItem('gameboard');
+        $('#gameboard').empty();
+        $('#gameboard').html(table);
+        cardClick();
+        //pause mode
+    });
+
 }
 
-// TODO:Show number of moves during game;
-//     create 'modal' for replay displaying stats
-//     restart button to start everything over;
+// TODO create 'modal' for replay displaying stats
 //     README
 //     Add unique functionality beyond the 
 //         minimum requirements (Implement a 

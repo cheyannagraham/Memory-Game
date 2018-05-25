@@ -221,6 +221,22 @@ function events(){
         gamePlay();
         $('#replay-container').addClass('hide');
     });
+
+    $('#restart-button').click(function(ev){
+        $('#restart-container').toggleClass('hide');
+    });
+
+    $('#restart-game-button').click(function(ev){
+        $('#restart-container').toggleClass('hide');
+    });
+    
+    $('#start-over-button').click(function(ev){
+        $('#restart-container').toggleClass('hide');
+    });
+
+    $('#cancel-button').click(function(ev){
+        $('#restart-container').toggleClass('hide');
+    });
 }
 
 // TODO:Show number of moves during game;

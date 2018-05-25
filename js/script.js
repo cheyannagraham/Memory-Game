@@ -114,6 +114,7 @@ function reverseFlip(covers){
 function gamePlay(){
     timerStart = false;
 
+    // $('#timer').text('00:00');
     $('#timer').text('00:00');
     $('table').one('click',timer);
     $('#score').text('***');
@@ -124,7 +125,7 @@ function gamePlay(){
 
 function timer(){
     const timer = window.setInterval(time, 1000);
-    let count = 1;
+    let count = Number($('#timer').attr('data-seconds'));
     timerStart=true;
     let t = new Date();
 
@@ -153,7 +154,7 @@ function cardClick(){
     let turns = 0;
     const CARDS = Number($('#game-table').attr('data-size'));
     let score = $('#score');
-    let moves = 0;
+    let moves = Number($('#moves').text());
     
 
     $('#game-table').on('click','.card-cover',function(ev){
@@ -233,7 +234,6 @@ function events(){
 
     $('#level-down-button').click(function(ev){
         let size = Number($('#game-table').attr('data-size'));
-        console.log(size);
 
         if(size > 4){
             $('#game-table').attr('data-size',size-4);
@@ -266,15 +266,25 @@ function events(){
     
     $('#save-game').click(function(ev){
         localStorage.setItem('gameboard',$('#gameboard').html());
-        alert('game-saved');
+        localStorage.setItem('stats',$('#stats').html());
+
+        // alert('game-saved');
     });
     
     $('#load-game').click(function(ev){
-        const table = localStorage.getItem('gameboard');
-        $('#gameboard').empty();
-        $('#gameboard').html(table);
+        timerStart = false;
+        const gameboard = $('#gameboard') 
+        const stats = $('#stats');
+        
+        gameboard.empty();
+        stats.empty();
+        
+        gameboard.html(localStorage.getItem('gameboard'));
+        stats.html(localStorage.getItem('stats'));
+        
         cardClick();
-        //pause mode
+    // $('table').one('click',timer);
+        
     });
 
 }

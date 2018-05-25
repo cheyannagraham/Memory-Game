@@ -5,6 +5,7 @@ function fillBoard(template){
     let frag = $(document.createDocumentFragment());
     let count = 0;
     const [r,c] = findRC();
+    $('#board').text(`${r}x${c}`);
     
     for(let i=0; i < r; i++){
         const tr =$(document.createElement('tr'));

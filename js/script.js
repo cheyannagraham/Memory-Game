@@ -1,4 +1,17 @@
-let timerStart = false;
+let variables = {
+    timerStart : false,
+    seconds : 0,
+    time : '00:00',
+    turns : 0,
+    moves : 0,
+    games : 0,
+    score : '***',
+    pair : [],
+    flipped : [],
+    cards : 0,
+    boardSize : 4,
+}
+
 
 function fillBoard(template){
     let gameBoard=$('#game-table');
@@ -7,7 +20,8 @@ function fillBoard(template){
     let frag = $(document.createDocumentFragment());
     let count = 0;
     const [r,c] = findRC();
-    $('#board-size').text(`${r}x${c}`);
+    variables.boardSize = `${r}x${c}`;
+    $('#board-size').text(variables.boardSize);
     
     for(let i=0; i < r; i++){
         const tr =$(document.createElement('tr'));
@@ -40,14 +54,14 @@ function findRC(){
             if (tSize%j ===0){
             ratios[`${Math.abs(j-(tSize/j))}`] = [j,tSize/j];
             }
-}
+        }
     return ratios[Math.min(...Object.keys(ratios))];
     }
 }
 
 
 function createBoard(){
-    let matches = Number($('#game-table').attr('data-size'))/2;
+    let matches =variables.boardSize/2;
     let color = 'blue green red purple pink orange yellow black gray black magenta'.split(' ');
     let sym = '! @ # $ % ^ & * ( ) { } < > ~ / | [ ] ? ; :'.split(' ');
     let boardTemplate = [];
@@ -112,31 +126,43 @@ function reverseFlip(covers){
 
 
 function gamePlay(){
-    timerStart = false;
+    variables.timerStart = false;
+    variables.seconds = 0;
+    variables.seconds = 0;
+    variables.turns = 0;
+    variables.moves = 0;
+    variables.games = 0;
+    variables.score = '***';
+    variables.pair = [];
+    variables.flipped = [];
+    variables.cards = 0;
+
+    $('table').one('click',timer);
+    createBoard();
 
     // $('#timer').text('00:00');
-    $('#timer').text('00:00');
-    $('table').one('click',timer);
-    $('#score').text('***');
-    $('#moves').text(0);
-    createBoard();
+    // $('#timer').text('00:00');
+    // $('#score').text('***');
+    // $('#moves').text(0);
+
 }
 
 
 function timer(){
     const timer = window.setInterval(time, 1000);
-    let count = Number($('#timer').attr('data-seconds'));
-    timerStart=true;
+    let count = variables.seconds;
+    variables.timerStart=true;
     let t = new Date();
 
     function time() {
-        if(!timerStart){
+        if(!variables.timerStart){
             window.clearInterval(timer);
         }
         else {
             t.setSeconds(count);
             t.setMinutes(count/60);
-            $('#timer').text(`${t.getMinutes().toLocaleString('en-us',{minimumIntegerDigits:2})}:${t.getSeconds().toLocaleString('en-us',{minimumIntegerDigits:2})}`);
+            variables.time = `${t.getMinutes().toLocaleString('en-us',{minimumIntegerDigits:2})}:${t.getSeconds().toLocaleString('en-us',{minimumIntegerDigits:2})}`; 
+            $('#timer').text(variables.time);
             count ++;
         }
     }
@@ -149,63 +175,66 @@ function replay(){
 
 
 function cardClick(){
-    let pair = [];
-    let flipped=[];
-    let turns = 0;
-    const CARDS = Number($('#game-table').attr('data-size'));
-    let score = $('#score');
-    let moves = Number($('#moves').text());
+    // let pair = [];
+    // let flipped=[];
+    // let turns = 0;
+    // const CARDS = Number($('#game-table').attr('data-size'));
+    // let score = $('#score');
+    // let moves = Number($('#moves').text());
     
 
     $('#game-table').on('click','.card-cover',function(ev){
-        let games = Number($('#games').text());
+        // let games = Number($('#games').text());
 
-        pair.push($(ev.target).prev('.card-face').attr('data-card'));
-        flipped.push(ev.target)
+        variables.pair.push($(ev.target).prev('.card-face').attr('data-card'));
+        variables.flipped.push(ev.target)
 
-        if(pair.length === 2){
-            moves++;
-            $('#moves').text(moves);
+        if(variables.pair.length === 2){
+            variables.moves++;
+            $('#moves').text(variables.moves);
 
-            if(pair[0] != pair[1]){
-                reverseFlip(flipped);
-                turns++;
+            if(variables.pair[0] != variables.pair[1]){
+                reverseFlip(variables.flipped);
+                variables.turns++;
             }
 
-            else if(pair[0] === pair[1]){
-                flipped.forEach(function(el){
+            else if(variables.pair[0] === variables.pair[1]){
+                variables.flipped.forEach(function(el){
                     $(el).prev('.card-face').removeClass('unsolved');
                 });
             }
-            console.log(turns,'turns');
+            console.log(variables.turns,'turns');
 
-            pair = [];
-            flipped = [];
+            variables.pair = [];
+            variables.flipped = [];
         }
 
         flip(ev);
         
         //score ratings
-        if(turns <= (CARDS/4)*3){
-            score.text('***');
+        if(variables.turns <= (variables.cards/4)*3){
+            variables.score =('***');
+            $('#score').text(variables.score);
         }
         
-        else if(turns > CARDS){
-            score.text('*');
+        else if(variables.turns > variables.cards){
+            variables.score =('*');
+            $('#score').text(variables.score);
         }
         
         else{
-            score.text('**');
+            variables.score =('**');
+            $('#score').text(variables.score);
         }
 
         //game complete
         if($('.unsolved').length===0){
             replay();
-            turns = 0;
-            moves = 0;
-            games++;
-            timerStart=false;
-            $('#games').text(games);
+            variables.turns = 0;
+            variables.moves = 0;
+            variables.games++;
+            variables.timerStart=false;
+            $('#games').text(variables.games);
         }
     });
 }
@@ -225,18 +254,15 @@ function events(){
     });
 
     $('.level-up-button').click(function(ev){
-        let size = $('#game-table').attr('data-size');
-        
-        $('#game-table').attr('data-size',Number(size)+4);
+        variables.boardSize+4;
+        console.log(variables.boardSize)
         gamePlay();
         $('#replay-container').addClass('hide');
     });
 
     $('#level-down-button').click(function(ev){
-        let size = Number($('#game-table').attr('data-size'));
-
-        if(size > 4){
-            $('#game-table').attr('data-size',size-4);
+        if(variables.boardSize > 4){
+            variables.boardSize-4;
             gamePlay();
         }
 
@@ -254,8 +280,10 @@ function events(){
 
     $('#start-over-button').click(function(ev){
         $('#restart-container').toggleClass('hide');
-        $('#games').text(0);
-        $('#game-table').attr('data-size',4);
+        variables.games = 0;
+        variables.boardSize = 4;
+        // $('#games').text(0);
+        // $('#game-table').attr('data-size',4);
         gamePlay();
 
     });
@@ -266,21 +294,21 @@ function events(){
     
     $('#save-game').click(function(ev){
         localStorage.setItem('gameboard',$('#gameboard').html());
-        localStorage.setItem('stats',$('#stats').html());
+        localStorage.setItem('variables',variables);
 
-        // alert('game-saved');
     });
     
     $('#load-game').click(function(ev){
         timerStart = false;
         const gameboard = $('#gameboard') 
-        const stats = $('#stats');
+        // variables = $('#stats');
         
         gameboard.empty();
-        stats.empty();
+        // stats.empty();
         
         gameboard.html(localStorage.getItem('gameboard'));
-        stats.html(localStorage.getItem('stats'));
+        // stats.html(localStorage.getItem('stats'));
+        variables = localStorage.getItem('variables');
         
         cardClick();
     // $('table').one('click',timer);

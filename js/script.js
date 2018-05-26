@@ -8,10 +8,11 @@ let variables = {
     score : '***',
     pair : [],
     flipped : [],
-    cards : 0,
     boardSize : 4,
     boardDim : '2x2'
 }
+
+const restart = {...variables};
 
 
 function fillBoard(template){
@@ -128,24 +129,30 @@ function reverseFlip(covers){
 
 function gamePlay(){
     variables.timerStart = false;
-    variables.seconds = 0;
-    variables.seconds = 0;
-    variables.turns = 0;
-    variables.moves = 0;
-    variables.games = 0;
-    variables.score = '***';
     variables.pair = [];
     variables.flipped = [];
-    variables.cards = 0;
+    variables.turns = 0;
+
+    variables.seconds = 0;
+    $('#seconds').text(variables.seconds);
+
+    variables.time = '00:00';
+    $('#timer').text(variables.time);
+    
+    variables.turns = 0;
+    $('#turns').text(variables.turns);
+    
+    variables.moves = 0;
+    $('#moves').text(variables.moves);
+    
+    // variables.games = 0;
+    $('#games').text(variables.games);
+    
+    variables.score = '***';
+    $('#score').text(variables.score);
 
     $('table').one('click',timer);
     createBoard();
-
-    // $('#timer').text('00:00');
-    // $('#timer').text('00:00');
-    // $('#score').text('***');
-    // $('#moves').text(0);
-
 }
 
 
@@ -213,12 +220,12 @@ function cardClick(){
         flip(ev);
         
         //score ratings
-        if(variables.turns <= (variables.cards/4)*3){
+        if(variables.turns <= (variables.boardSize/4)*3){
             variables.score =('***');
             $('#score').text(variables.score);
         }
         
-        else if(variables.turns > variables.cards){
+        else if(variables.turns > variables.boardSize){
             variables.score =('*');
             $('#score').text(variables.score);
         }
@@ -278,11 +285,8 @@ function events(){
     });
 
     $('#start-over-button').click(function(ev){
-        $('#restart-container').toggleClass('hide');
-        variables.games = 0;
-
-        // $('#games').text(0);
-        // $('#game-table').attr('data-size',4);
+        $('#restart-container').toggleClass('hide');  
+        variables = {...restart};
         gamePlay();
 
     });

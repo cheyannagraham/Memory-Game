@@ -132,19 +132,13 @@ function gamePlay(){
     variables.pair = [];
     variables.flipped = [];
     variables.turns = 0;
-
     variables.seconds = 0;
-
     variables.time = '00:00';
-    
     variables.turns = 0;
-    
     variables.moves = 0;
-    
-    
     variables.score = '***';
-    setVars();
 
+    setVars();
     createBoard();
     $('table').one('click',timer);
 }
@@ -293,7 +287,6 @@ function events(){
     $('#save-game').click(function(ev){
         localStorage.setItem('gameboard',$('#gameboard').html());
         localStorage.setItem('variables',JSON.stringify(variables));
-        console.log(localStorage.getItem('variables'));
     });
     
     $('#load-game').click(function(ev){
@@ -306,7 +299,6 @@ function events(){
         variables.timerStart = false;
         
         setVars();
-        // console.log(variables);
         cardClick();
         $('table').one('click',timer);
 

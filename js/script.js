@@ -336,10 +336,6 @@ function events(){
 
 // TODO create 'modal' for replay displaying stats
 //     README
-//     Add unique functionality beyond the 
-//         minimum requirements (Implement a 
-//         leaderboard, store game state using 
-//         local storage, etc.)
 //     Implement additional optimizations that 
 //         improve the performance and user experience 
 //         of the game (keyboard shortcuts for gameplay, etc).

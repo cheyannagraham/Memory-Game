@@ -12,20 +12,20 @@
     </head>
 
     <body>
-        <header id='main-header'>
+        <header id="main-header">
             <h1>Character Match</h1>
         </header>
 
         <hr>
 
         <main id="content">
-            <aside id='stats-container'>
+            <aside id="stats-container">
 
                 <h2>Stats</h2>
                 
                 <div id="stats">
                     <p class="stat-item"><span class="stats-label">Score: </span><span data-score="***" id="score"></span></p>
-                    <p class="stat-item"><span class="stats-label" >Time: </span><span data-seconds="0" id='timer'></span></p>
+                    <p class="stat-item"><span class="stats-label" >Time: </span><span data-seconds="0" id="timer"></span></p>
                     <p class="stat-item"><span class="stats-label">Games: </span><span data-games="0" id="games">0</span></p>
                     <p class="stat-item"><span class="stats-label">Board: </span><span data-board="0" id="board-dim"></span></p>
                     <p class="stat-item"><span class="stats-label">Moves: </span><span data-moves="0" id="moves"></span></p>
@@ -33,9 +33,9 @@
 
             </aside>
             
-            <secton id='main-buttons'>
-                <button id='level-down-button'>Level Down</button>
-                <button class='level-up-button'>Level Up</button>
+            <secton id="main-buttons">
+                <button id="level-down-button">Level Down</button>
+                <button class="level-up-button">Level Up</button>
                 <button id ="restart-button">Restart</button>
                 <button id ="show-stats">MyStats</button>
                 <button id ="save-game">Save Game</button>
@@ -56,9 +56,9 @@
         <aside id="replay-container" class="hide">
             <h1>Winner!</h1>
 
-                <button id='replay-button'>Play Again!</button>
+                <button id="replay-button">Play Again!</button>
 
-                <button class='level-up-button'>Level Up!</button>
+                <button class="level-up-button">Level Up!</button>
 
         </aside>
 
@@ -70,9 +70,21 @@
                 start over<small>(clears-stats)?</small>
             </p>
 
-            <button id='restart-game-button'>Current Game</button>
-            <button id='start-over-button'>Start Over</button>
-            <button id='cancel-button'>Cancel</button>
+            <button id="restart-game-button">Current Game</button>
+            <button id="start-over-button">Start Over</button>
+            <button id="cancel-button">Cancel</button>
+        </aside>
+
+        <aside id="stats-display" class="hide">
+            <h2>Stats</h2>
+            <table id= "stats-table">
+                <tr id="table-header">
+                    <th class="table-head-label">Time</th>
+                    <th class="table-head-label">Score</th>
+                    <th class="table-head-label">Moves</th>
+                    <th class="table-head-label">Board</th>
+                </tr>
+            </table>
         </aside>
     </body>
 </html>

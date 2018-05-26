@@ -8,7 +8,8 @@ let variables = {
     score : '***',
     pair : [],
     boardSize : 4,
-    boardDim : '2x2'
+    boardDim : '2x2',
+    stats : []
 }
 
 const restart = {...variables};
@@ -181,6 +182,10 @@ function replay(){
     $('#replay-container').removeClass('hide');
 }
 
+function showStats(){
+
+}
+
 
 function cardClick(){
 
@@ -228,6 +233,7 @@ function cardClick(){
         if($('.unsolved').length===0){
             replay();
             variables.games++;
+            variables.stats.push([variables.time,variables.score,variables.moves,variables.boardSize])
             variables.timerStart=false;
             $('#games').text(variables.games);
         }

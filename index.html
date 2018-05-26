@@ -75,15 +75,21 @@
             <button id="cancel-button">Cancel</button>
         </aside>
 
-        <aside id="stats-display" class="hide">
+        <aside id="stats-display-container" class="hide">
             <h2>Stats</h2>
+
             <table id= "stats-table">
-                <tr id="table-header">
-                    <th class="table-head-label">Time</th>
-                    <th class="table-head-label">Score</th>
-                    <th class="table-head-label">Moves</th>
-                    <th class="table-head-label">Board</th>
-                </tr>
+
+                <thead>
+                    <tr id="table-header">
+                        <th class="table-head-label">Time</th>
+                        <th class="table-head-label">Score</th>
+                        <th class="table-head-label">Moves</th>
+                        <th class="table-head-label">Board</th>
+                    </tr>
+                </thead>
+
+                <tbody id="stats-table-body"></tbody>
             </table>
         </aside>
     </body>

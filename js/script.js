@@ -9,7 +9,8 @@ let variables = {
     pair : [],
     boardSize : 4,
     boardDim : '2x2',
-    stats : []
+    stats : [],
+    match : []
 }
 
 const restart = {...variables};
@@ -132,6 +133,7 @@ function reverseFlip(){
 function gamePlay(){
     variables.timerStart = false;
     variables.pair = [];
+    variables.match = [];
     variables.turns = 0;
     variables.seconds = 0;
     variables.time = '00:00';
@@ -183,13 +185,29 @@ function replay(){
 }
 
 function showStats(){
+    $('#stats-display-container').removeClass('hide');
+    let tbody = $('#stats-table-body');
+    tbody.empty();
 
+    let frag = $(document.createDocumentFragment());
+
+    variables.stats.forEach(function(stat){
+        const tr = document.createElement('tr');
+        $(tr).addClass('stat-row')
+        stat.forEach(function(s){
+            $(tr).append(`<td class="stat-info">${s}</td>`);
+        });
+        frag.append(tr);
+    });
+
+    tbody.append(frag);
 }
 
 
 function cardClick(){
 
     $('#game-table').on('click','.card-cover',function(ev){
+        variables.match.push(ev.target);
 
         variables.pair.push($(ev.target).prev('.card-face').attr('data-card'));
         $(ev.target).addClass('flipped');
@@ -204,11 +222,14 @@ function cardClick(){
             }
 
             else if(variables.pair[0] === variables.pair[1]){
-                $('.flipped').removeClass('unsolved flipped');
-
+                variables.match.forEach(function(m){
+                    $(m).removeClass('flipped')
+                    $(m).prev('.card-face').removeClass('unsolved');
+                });
             }
 
             variables.pair = [];
+            variables.match = [];
         }
 
         flip(ev);
@@ -231,9 +252,10 @@ function cardClick(){
 
         //game complete
         if($('.unsolved').length===0){
+            console.log('here');
             replay();
             variables.games++;
-            variables.stats.push([variables.time,variables.score,variables.moves,variables.boardSize])
+            variables.stats.push([variables.time,variables.score,variables.moves,variables.boardDim])
             variables.timerStart=false;
             $('#games').text(variables.games);
         }
@@ -306,6 +328,10 @@ function events(){
         $('table').one('click',timer);
 
     });
+
+    $('#show-stats').click(function(ev){
+        showStats();
+    })
 
 }
 

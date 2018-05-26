@@ -102,8 +102,8 @@ function flip(ev){
         $(ev.target).css('transform','scalex(0)');
 
         setTimeout(function(){
-          $(ev.target).toggleClass('hide');
-          $(ev.target).prev('.card').toggleClass('hide');
+          $(ev.target).addClass('hide');
+          $(ev.target).prev('.card').removeClass('hide');
           
           setTimeout(function(){
             $(ev.target).prev('.card').css('transform','scalex(1)');
@@ -120,8 +120,8 @@ function reverseFlip(){
                 $(card).prev('.card').css('transform','scalex(0)');
     
                 setTimeout(function(){
-                    $(card).prev('.card').toggleClass('hide');
-                    $(card).toggleClass('hide');
+                    $(card).prev('.card').addClass('hide');
+                    $(card).removeClass('hide');
                     $(card).css('transform','scalex(1)');
                     $(card).removeClass('flipped');
                 },300);
@@ -212,6 +212,8 @@ function cardClick(){
         variables.pair.push($(ev.target).prev('.card-face').attr('data-card'));
         $(ev.target).addClass('flipped');
 
+        flip(ev);
+
         if(variables.pair.length === 2){
             variables.moves++;
             $('#moves').text(variables.moves);
@@ -231,8 +233,6 @@ function cardClick(){
             variables.pair = [];
             variables.match = [];
         }
-
-        flip(ev);
         
         //score ratings
         if(variables.turns <= (variables.boardSize/4)*3){
@@ -252,7 +252,6 @@ function cardClick(){
 
         //game complete
         if($('.unsolved').length===0){
-            console.log('here');
             replay();
             variables.games++;
             variables.stats.push([variables.time,variables.score,variables.moves,variables.boardDim])

@@ -10,6 +10,7 @@ let variables = {
     flipped : [],
     cards : 0,
     boardSize : 4,
+    boardDim : '2x2'
 }
 
 
@@ -20,8 +21,8 @@ function fillBoard(template){
     let frag = $(document.createDocumentFragment());
     let count = 0;
     const [r,c] = findRC();
-    variables.boardSize = `${r}x${c}`;
-    $('#board-size').text(variables.boardSize);
+    variables.boardDim = `${r}x${c}`;
+    $('#board-dim').text(variables.boardDim);
     
     for(let i=0; i < r; i++){
         const tr =$(document.createElement('tr'));
@@ -40,7 +41,7 @@ function fillBoard(template){
 
 function findRC(){
     //get rows & columns
-    const tSize = Number($('#game-table').attr('data-size'));
+    const tSize = variables.boardSize;
     const sqrt = Math.sqrt(tSize);
         
     if(tSize % sqrt === 0){
@@ -254,18 +255,16 @@ function events(){
     });
 
     $('.level-up-button').click(function(ev){
-        variables.boardSize+4;
-        console.log(variables.boardSize)
+        variables.boardSize = variables.boardSize + 4;
         gamePlay();
         $('#replay-container').addClass('hide');
     });
 
     $('#level-down-button').click(function(ev){
         if(variables.boardSize > 4){
-            variables.boardSize-4;
+            variables.boardSize = variables.boardSize-4;
             gamePlay();
         }
-
     });
 
     $('#restart-button,#cancel-button').click(function(ev){
@@ -281,7 +280,7 @@ function events(){
     $('#start-over-button').click(function(ev){
         $('#restart-container').toggleClass('hide');
         variables.games = 0;
-        variables.boardSize = 4;
+
         // $('#games').text(0);
         // $('#game-table').attr('data-size',4);
         gamePlay();

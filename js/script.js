@@ -111,19 +111,37 @@ function flip(ev){
 }
 
 
-function reverseFlip(covers){
-    covers.forEach(function(card){
-
-        setTimeout(function(){
-            $(card).prev('.card').css('transform','scalex(0)');
-            
+function reverseFlip(){
+    const flipped = $('.flipped');
+    console.log('flip',flipped);
+    
+    
+    for (let card of flipped){
             setTimeout(function(){
-                $(card).prev('.card').toggleClass('hide');
-                $(card).toggleClass('hide');
-                $(card).css('transform','scalex(1)');
-            },300);
-        },1200);
-    });
+                $(card).prev('.card').css('transform','scalex(0)');
+    
+                setTimeout(function(){
+                    $(card).prev('.card').toggleClass('hide');
+                    $(card).toggleClass('hide');
+                    $(card).css('transform','scalex(1)');
+                    $(card).removeClass('flipped');
+                },300);
+            },1200);
+        }
+    // console.log(typeof flipped);
+    
+    // flipped.forEach(function(card){
+    //     setTimeout(function(){
+    //         $(card).prev('.card').css('transform','scalex(0)');
+            
+    //         setTimeout(function(){
+    //             $(card).prev('.card').toggleClass('hide');
+    //             $(card).toggleClass('hide');
+    //             $(card).css('transform','scalex(1)');
+    //             $(card).removeClass('flipped');
+    //         },300);
+    //     },1200);
+    // });
 }
 
 
@@ -187,14 +205,18 @@ function cardClick(){
     $('#game-table').on('click','.card-cover',function(ev){
 
         variables.pair.push($(ev.target).prev('.card-face').attr('data-card'));
-        variables.flipped.push(ev.target)
+        $(ev.target).addClass('flipped');
+        variables.flipped.push(ev.target);
+        // console.log(variables.flipped);
+        // console.log($(variables.flipped[0]));
 
         if(variables.pair.length === 2){
             variables.moves++;
             $('#moves').text(variables.moves);
 
             if(variables.pair[0] != variables.pair[1]){
-                reverseFlip(variables.flipped);
+                // reverseFlip(variables.flipped);
+                reverseFlip();
                 variables.turns++;
             }
 
@@ -296,6 +318,7 @@ function events(){
         gameboard.html(localStorage.getItem('gameboard'));
 
         variables = JSON.parse(localStorage.getItem('variables'));
+        console.log(variables);
         variables.timerStart = false;
         
         setVars();

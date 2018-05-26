@@ -134,24 +134,30 @@ function gamePlay(){
     variables.turns = 0;
 
     variables.seconds = 0;
-    $('#seconds').text(variables.seconds);
 
     variables.time = '00:00';
-    $('#timer').text(variables.time);
     
     variables.turns = 0;
-    $('#turns').text(variables.turns);
     
     variables.moves = 0;
-    $('#moves').text(variables.moves);
     
-    $('#games').text(variables.games);
     
     variables.score = '***';
+    setVars();
+
+    createBoard();
+    $('table').one('click',timer);
+}
+
+function setVars() {
+    $('#seconds').text(variables.seconds);
+    $('#timer').text(variables.time);
+    $('#turns').text(variables.turns);
+    $('#moves').text(variables.moves);
+    $('#games').text(variables.games);
     $('#score').text(variables.score);
 
-    $('table').one('click',timer);
-    createBoard();
+
 }
 
 
@@ -171,6 +177,7 @@ function timer(){
             variables.time = `${t.getMinutes().toLocaleString('en-us',{minimumIntegerDigits:2})}:${t.getSeconds().toLocaleString('en-us',{minimumIntegerDigits:2})}`; 
             $('#timer').text(variables.time);
             count ++;
+            variables.seconds = count;
         }
     }
 }
@@ -286,16 +293,20 @@ function events(){
     $('#save-game').click(function(ev){
         localStorage.setItem('gameboard',$('#gameboard').html());
         localStorage.setItem('variables',JSON.stringify(variables));
+        console.log(localStorage.getItem('variables'));
     });
     
     $('#load-game').click(function(ev){
-        variables.timerStart = false;
         const gameboard = $('#gameboard');
         
         gameboard.empty();
         gameboard.html(localStorage.getItem('gameboard'));
 
         variables = JSON.parse(localStorage.getItem('variables'));
+        variables.timerStart = false;
+        
+        setVars();
+        // console.log(variables);
         cardClick();
         $('table').one('click',timer);
 

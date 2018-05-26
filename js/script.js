@@ -145,7 +145,6 @@ function gamePlay(){
     variables.moves = 0;
     $('#moves').text(variables.moves);
     
-    // variables.games = 0;
     $('#games').text(variables.games);
     
     variables.score = '***';
@@ -183,16 +182,8 @@ function replay(){
 
 
 function cardClick(){
-    // let pair = [];
-    // let flipped=[];
-    // let turns = 0;
-    // const CARDS = Number($('#game-table').attr('data-size'));
-    // let score = $('#score');
-    // let moves = Number($('#moves').text());
-    
 
     $('#game-table').on('click','.card-cover',function(ev){
-        // let games = Number($('#games').text());
 
         variables.pair.push($(ev.target).prev('.card-face').attr('data-card'));
         variables.flipped.push(ev.target)
@@ -238,8 +229,6 @@ function cardClick(){
         //game complete
         if($('.unsolved').length===0){
             replay();
-            variables.turns = 0;
-            variables.moves = 0;
             variables.games++;
             variables.timerStart=false;
             $('#games').text(variables.games);
@@ -288,7 +277,6 @@ function events(){
         $('#restart-container').toggleClass('hide');  
         variables = {...restart};
         gamePlay();
-
     });
 
     $('#show-stats').click(function(ev){
@@ -297,25 +285,20 @@ function events(){
     
     $('#save-game').click(function(ev){
         localStorage.setItem('gameboard',$('#gameboard').html());
-        localStorage.setItem('variables',variables);
-
+        localStorage.setItem('variables',JSON.stringify(variables));
     });
     
     $('#load-game').click(function(ev){
-        timerStart = false;
-        const gameboard = $('#gameboard') 
-        // variables = $('#stats');
+        variables.timerStart = false;
+        const gameboard = $('#gameboard');
         
         gameboard.empty();
-        // stats.empty();
-        
         gameboard.html(localStorage.getItem('gameboard'));
-        // stats.html(localStorage.getItem('stats'));
-        variables = localStorage.getItem('variables');
-        
+
+        variables = JSON.parse(localStorage.getItem('variables'));
         cardClick();
-    // $('table').one('click',timer);
-        
+        $('table').one('click',timer);
+
     });
 
 }

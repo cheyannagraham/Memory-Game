@@ -332,8 +332,12 @@ function events(){
         showStats();
     })
 
-    $('#menu-button').click(function(ev){
+    $('#menu-button-icon').click(function(ev){
         $('#main-buttons-container').removeClass('hide');
+    });
+
+    $('#main-buttons-container,#close').click(function(ev){
+        $('#main-buttons-container').addClass('hide');
     });
 
 }

@@ -60,9 +60,27 @@ body{
     background:navy;
     width:100%;
     min-height: 70vh;
-    /* display:flex; */
+    display:flex;
     overflow: auto;
     font-family : 'Bowlby One SC', cursive;
+
+}
+
+.menu-button {
+    width:100%;
+    height:5vh;
+    background:none;
+    font-size:0.97em;
+}
+
+#menu-button-icon {
+    height: 50px;
+    background:none;
+    border:none;
+    font-size: 2em;
+    padding:10px;
+    cursor:pointer;
+    
 
 }
 
@@ -97,18 +115,29 @@ body{
     background: white;
 }
 
-#main-buttons {
-    /* display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around; */
-    width:15vw;
-    height: 80vh;
+.menu-button-container {
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: space-around;
     position:absolute;
-    top:0px;
-    font-size: 0.68em;
+    top:0;
+
 }
 
 .hide {
     display:none;
+}
+
+.prompt {
+    width:60vw;
+    height:60vh;
+    position:absolute;
+    top: 20%;
+    left: 0;
+    right: 0;
+    margin-left:auto;
+    margin-right:auto;
+    background:gray;
+    border-radius: 5px;
 }
 

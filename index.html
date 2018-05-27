@@ -34,20 +34,35 @@
 
             </section>
 
+            <aside id="main-buttons-container" class="hide">
+                <ul id="buttons-table">
+                    <li><button class="menu-button" id="level-down-button">Level Down</button></li>
+                    <li><button class="level-up-button menu-button">Level Up</button></li>
+                    <li><button class="menu-button" id ="restart-button">Restart</button></li>
+                    <li><button class="menu-button" id ="show-stats">MyStats</button></li>
+                    <li><button class="menu-button" id ="save-game">Save Game</button></li>
+                    <li><button class="menu-button" id ="load-game">Load Game</button></li>
+                    <li><button class="menu-button" id ="close">Close</button></li>
+                </ul>
+            </aside>
+
+
+
+
             <section id="gameboard">
-                <button id="menu-button" class="button">&#9776;</button>
+                <button id="menu-button-icon" class="">&#9776;</button>
                 <table id="game-table" data-size="4"></table>
             </section>
 
         </main>
 
-        <aside id="replay-container" class="hide">
+        <aside id="replay-container" class="hide prompt">
             <h1>Winner!</h1>
                 <button id="replay-button">Play Again!</button>
                 <button class="level-up-button">Level Up!</button>
         </aside>
 
-        <aside id = "restart-container" class="hide">
+        <aside id = "restart-container" class="hide prompt">
             <h2>Restart</h2>
             
             <p id="restart-text">
@@ -60,7 +75,7 @@
             <button id="cancel-button">Cancel</button>
         </aside>
 
-        <aside id="stats-display-container" class="hide">
+        <aside id="stats-display-container" class="hide prompt">
             <h2>Stats</h2>
 
             <table id= "stats-table">
@@ -78,13 +93,5 @@
             </table>
         </aside>
 
-        <aside id="main-buttons-container" class="hide">
-            <button class="button" id="level-down-button">Level Down</button>
-            <button class="level-up-button button">Level Up</button>
-            <button class="button" id ="restart-button">Restart</button>
-            <button class="button" id ="show-stats">MyStats</button>
-            <button class="button" id ="save-game">Save Game</button>
-            <button class="button" id ="load-game">Load Saved Game</button>
-        </aside>
     </body>
 </html>

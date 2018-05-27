@@ -332,6 +332,10 @@ function events(){
         showStats();
     })
 
+    $('#menu-button').click(function(ev){
+        $('#main-buttons-container').removeClass('hide');
+    });
+
 }
 
 // TODO create 'modal' for replay displaying stats

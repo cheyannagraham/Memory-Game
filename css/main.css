@@ -32,7 +32,7 @@ body{
 #main-header h1{
     width:100%;
     font-size:2em;
-    padding:15px;
+    padding:15px 0;
 
 }
 
@@ -60,7 +60,7 @@ body{
     background:navy;
     width:100%;
     min-height: 70vh;
-    display:flex;
+    /* display:flex; */
     overflow: auto;
     font-family : 'Bowlby One SC', cursive;
 
@@ -69,6 +69,8 @@ body{
 #game-table {
     margin:auto;
     border-collapse:collapse;
+    padding:10px;
+    
 }
 
 .card {
@@ -99,6 +101,10 @@ body{
     /* display: flex;
     flex-wrap: wrap;
     justify-content: space-around; */
+    width:15vw;
+    height: 80vh;
+    position:absolute;
+    top:0px;
     font-size: 0.68em;
 }
 

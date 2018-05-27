@@ -290,7 +290,6 @@ function events(){
 
     $('#restart-button,#cancel-button').click(function(ev){
         $('#restart-container').toggleClass('hide');
-        //'pause' timer when prompt shows up
     });
 
     $('#restart-game-button').click(function(ev){
@@ -305,7 +304,7 @@ function events(){
     });
 
     $('#show-stats').click(function(ev){
-        //pause mode
+        showStats();
     });
     
     $('#save-game').click(function(ev){
@@ -328,22 +327,24 @@ function events(){
 
     });
 
-    $('#show-stats').click(function(ev){
-        showStats();
-    })
-
     $('#menu-button-icon').click(function(ev){
         $('#main-buttons-container').removeClass('hide');
+        setTimeout(function(){
+            $('#main-buttons-container').css('transform','scaley(1)');
+
+        },0);
     });
 
     $('#main-buttons-container,#close').click(function(ev){
+        $('#main-buttons-container').css('transform','scaley(0)');
         $('#main-buttons-container').addClass('hide');
+    });
+
+    $('#close-stats').click(function(ev){
+        $('#stats-display-container').addClass('hide');
     });
 
 }
 
-// TODO create 'modal' for replay displaying stats
-//     README
-//     Implement additional optimizations that 
-//         improve the performance and user experience 
-//         of the game (keyboard shortcuts for gameplay, etc).
+// TODO README
+

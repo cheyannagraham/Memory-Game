@@ -151,3 +151,50 @@ body{
     background: lightblue;
 }
 
+
+/* ANIMATION */
+
+.miss-animate {
+    animation-duration: .4s;
+    animation-name: shake;
+    /* animation-delay: .5s; */
+    position:relative;
+    color:white;
+}
+
+.match-animate {
+
+}
+
+@keyframes shake {  
+    from {       
+      transform:translatex(0px);
+    }
+    25% {
+    background:red;
+    color:black;
+        
+      transform:translatex(10px);
+    }
+    50% {
+    background:red;
+    color:black;
+    
+        
+      transform:translatex(0px);
+    }
+    
+    75% {
+    background:red;
+    color:black;
+    
+        
+      transform:translatex(-10px);
+    }
+    
+    to {
+      transform:translatex(0px);
+    }
+   }
+   
+

@@ -1,6 +1,6 @@
 let variables = {
     timerStart : false,
-    seconds : 0,
+    seconds : 1,
     time : '00:00',
     moves : 0,
     games : 0,
@@ -130,7 +130,7 @@ function gamePlay(){
     variables.pair = [];
     variables.match = [];
     variables.turns = 0;
-    variables.seconds = 0;
+    variables.seconds = 1;
     variables.time = '00:00';
     variables.turns = 0;
     variables.moves = 0;
@@ -203,27 +203,35 @@ function showStats(){
 function miss(){
     console.log('miss');
 
-    // variables.turns++;
+    variables.match.forEach(function(card){
+    $(`#${card}`).addClass('animate');
+    });
 
-    // const cards = variables.match;
-    // setTimeout(function(){
-    //     cards.forEach(function(card){
-    //         $(card).prev('.card-face').addClass('miss');
-    //     });
-
-    //     variables.turns++;
-
-    // },600);
-
-    // setTimeout(function(){
-    //     cards.forEach(function(c){
-    //         $(c).prev('.card-face').removeClass('miss');
-    //     });
-
-    // },2000);
+    setTimeout(function(){
+        $('.animate').addClass('miss-animate');
 
 
-    reverseFlip();
+    },600);
+
+    setTimeout(function(){
+        // reverseFlip();
+        $('.animate').removeClass('animate miss-animate');
+        // variables.match.forEach(function(card){
+        //     $(`#${card}`).removeClass('animate miss-animate');
+        //     console.log('here');
+        //     });
+
+    },1000);
+
+    setTimeout(function(){
+        reverseFlip();
+        
+        // variables.match.forEach(function(card){
+        //     $(`#${card}`).removeClass('animate miss-animate');
+        //     console.log('here');
+        //     });
+
+    },500);
 
     //add click event
     $('#game-table').on('click','.card-cover',function(ev){

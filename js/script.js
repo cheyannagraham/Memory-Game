@@ -13,8 +13,6 @@ let variables = {
     match : []
 }
 
-const restart = {...variables};
-
 
 function fillBoard(template){
     let gameBoard=$('#game-table');
@@ -229,21 +227,6 @@ function miss(){
 
     // },2000);
 
-    //score ratings
-    if (variables.moves <= (variables.boardSize/4)*3){
-        variables.score =('***');
-        $('#score').text(variables.score);
-    }
-    
-    else if (variables.moves > variables.boardSize){
-        variables.score =('*');
-        $('#score').text(variables.score);
-    }
-    
-    else {
-        variables.score =('**');
-        $('#score').text(variables.score);
-    }
 
     reverseFlip();
 
@@ -295,6 +278,20 @@ function cardClick(ev){
     if(variables.match.length === 2){
         variables.moves++;
         $('#moves').text(variables.moves);
+
+            //score ratings
+        if (variables.moves/variables.boardSize <= 0.75){
+            variables.score =('***');
+            $('#score').text(variables.score);
+        
+        }else if (variables.moves > variables.boardSize){
+            variables.score =('*');
+            $('#score').text(variables.score);
+        
+        }else {
+            variables.score =('**');
+            $('#score').text(variables.score);
+        }
 
         //remove click event
         $('#game-table').off('click','.card-cover');

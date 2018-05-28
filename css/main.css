@@ -139,34 +139,20 @@ body{
     text-align:center;
 }
 
-.miss {
-    border:5px solid yellow;
-    background: red;
-    /* transform:translate(20px,20%); */
-    /* transform: rotateX(180deg); */
-    transform: translateX(10px) rotate(10deg) translateY(5px);
-}
-
-.match {
-    background: lightblue;
-}
-
 
 /* ANIMATION */
 
 .miss-animate {
     animation-duration: .4s;
-    animation-name: shake;
-    /* animation-delay: .5s; */
-    position:relative;
-    color:white;
+    animation-name: miss;
 }
 
 .match-animate {
-
+    animation-duration: .6s;
+    animation-name: match;
 }
 
-@keyframes shake {  
+@keyframes miss {  
     from {       
       transform:translatex(0px);
     }
@@ -196,5 +182,37 @@ body{
       transform:translatex(0px);
     }
    }
+
+@keyframes match {  
+from {       
+    transform:translatey(0px);
+}
+25% {
+    background:lightblue;
+    color:yellow;    
+    transform:translatey(10px);
+}
+
+50% {
+    background:lightblue;
+    color:yellow;
+
+    
+    transform:translatey(0px);
+}
+
+75% {    background:lightblue;
+    color:yellow;
+
+
+    
+    transform:translatey(-10px);
+}
+
+to {    background:lightblue;
+    color:yellow;
+    transform:translatexy(0px);
+}
+}
    
 

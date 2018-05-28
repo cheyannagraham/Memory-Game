@@ -201,37 +201,21 @@ function showStats(){
 
 
 function miss(){
-    console.log('miss');
-
     variables.match.forEach(function(card){
     $(`#${card}`).addClass('animate');
     });
 
     setTimeout(function(){
         $('.animate').addClass('miss-animate');
-
-
     },600);
 
     setTimeout(function(){
-        // reverseFlip();
         $('.animate').removeClass('animate miss-animate');
-        // variables.match.forEach(function(card){
-        //     $(`#${card}`).removeClass('animate miss-animate');
-        //     console.log('here');
-        //     });
-
     },1000);
 
     setTimeout(function(){
         reverseFlip();
-        
-        // variables.match.forEach(function(card){
-        //     $(`#${card}`).removeClass('animate miss-animate');
-        //     console.log('here');
-        //     });
-
-    },500);
+    },100);
 
     //add click event
     $('#game-table').on('click','.card-cover',function(ev){
@@ -241,28 +225,38 @@ function miss(){
 
 
 function match() {
-    // const cards = variables.match;
-    // setTimeout(function(){
-    //     cards.forEach(function(card){
-    //         $(card).prev('.card-face').addClass('match');
-    //     });
-
-    // },600);
-    console.log('match');
+    variables.match.forEach(function(card){
+        $(`#${card}`).addClass('animate');
+        });
     
-    variables.match.forEach(function (card){
-        $(`#${card}`).removeClass('unsolved');
-    });
+        setTimeout(function(){
+            $('.animate').addClass('match-animate');
+        },500);
+    
+        setTimeout(function(){
+            variables.match.forEach(function (card){
+                $(`#${card}`).removeClass('animate match-animate unsolved');
+            });
+        },800);
 
-    //game complete
-    if($('.unsolved').length===0){
-        replay();
-        variables.games++;
-        variables.stats.push([variables.time,variables.score,variables.moves,variables.boardDim])
-        variables.timerStart=false;
-        $('#games').text(variables.games);
-    }
-    variables.match = [];
+        setTimeout(function(){
+            variables.match = [];
+            console.log($('.unsolved').length)
+
+            //game complete
+            if($('.unsolved').length===0){
+                replay();
+                variables.games++;
+                variables.stats.push([variables.time,variables.score,variables.moves,variables.boardDim])
+                variables.timerStart=false;
+                $('#games').text(variables.games);
+            } 
+
+        },1000);
+
+  
+            
+
 
     //add click event
     $('#game-table').on('click','.card-cover',function(ev){
@@ -300,7 +294,7 @@ function cardClick(ev){
             miss();
         }
 
-        else{
+        else if ($(`#${variables.match[0]}`).attr('data-card') === $(`#${variables.match[1]}`).attr('data-card')){
             match();
         }
     }
@@ -408,4 +402,6 @@ function events(){
 }
 
 // TODO README
+
+//prompt wont load
 

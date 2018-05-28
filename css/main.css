@@ -169,38 +169,35 @@ body {
 
 }
 
-@keyframes miss {  
-    from {       
+@keyframes miss {
+    from {
       transform:translatex(0px);
     }
+
     25% {
-    background:red;
-    color:black;
-        
-      transform:translatex(10px);
+        background:red;
+        color:black;
+        transform:translatex(10px);
     }
+
     50% {
-    background:red;
-    color:black;
-    
-        
-      transform:translatex(0px);
+        background:red;
+        color:black;
+        transform:translatex(0px);
     }
-    
+
     75% {
-    background:red;
-    color:black;
-    
-        
-      transform:translatex(-10px);
+        background:red;
+        color:black;
+        transform:translatex(-10px);
     }
-    
+
     to {
       transform:translatex(0px);
     }
    }
 
-@keyframes match {  
+@keyframes match {
     from {
         transform:translatey(0px);
     }

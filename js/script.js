@@ -377,7 +377,7 @@ function events(){
 
 
     $('#menu-button-icon').click(function(ev){
-        $('#main-buttons-container').removeClass('hide');
+        $('#main-buttons-container').toggleClass('hide');
 
         setTimeout(function(){
             $('#main-buttons-container').css('transform','scaley(1)');
@@ -399,4 +399,5 @@ function events(){
 // TODO README
 
 //padding around table, fix padding in stats, media queries, better graphics
+// game save confirmation
 

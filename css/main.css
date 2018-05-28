@@ -8,7 +8,6 @@ body{
     padding: 0;
     margin: 0;
     font: 1em 'Alfa Slab One', cursive;
-    
 }
 
 .header{
@@ -22,7 +21,6 @@ body{
     border-radius: 5px;
     padding:2px;
     cursor:pointer;
-    
 }
 
 .button:hover {
@@ -57,7 +55,7 @@ body{
     width:100%;
     font-size: 0.85em;
     padding:10px 0;
-    color:#5f8c8c;
+    color:#af551d;
     background: #f0f4ef;
 }
 
@@ -65,10 +63,10 @@ body{
     display:flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    margin: 5px;
 }
 
 .stat-item {
-    padding: 5px;
     margin:5px;
 }
 
@@ -166,7 +164,7 @@ body{
     border-radius: 5px;
     padding:20px;
     text-align:center;
-    color:white;
+    color:#fcf82d;
 }
 
 

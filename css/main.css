@@ -76,8 +76,6 @@ body{
     background: linear-gradient(130deg,#192f47 20%,#145359 60%,#16929e);
     width:100%;
     min-height: 70vh;
-    display:flex;
-    overflow: auto;
     font-family : 'Bowlby One SC', cursive;
 
 }
@@ -90,21 +88,29 @@ body{
 }
 
 #menu-button-icon {
-    height: 50px;
+    min-height:8vh;
     background:none;
     border:none;
     font-size: 2em;
-    padding:10px;
+    padding:15px;
     cursor:pointer;
-    color:#4bd1a7
+    color:#4bd1a7;
+}
 
+#table-container {
+    height:100%;
+    width:100%;
+    overflow: auto;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    min-height:62vh;
 }
 
 #game-table {
     margin:auto;
     border-collapse:collapse;
-    padding:10px;
-    
+    padding:20px;
 }
 
 .card {
@@ -226,5 +232,3 @@ body{
         transform:translatexy(0px);
     }
 }
-
-/* shadow to cards; */

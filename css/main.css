@@ -11,6 +11,9 @@ body{
     
 }
 
+body {
+}
+
 .header{
     text-align: center;
     font-size:1.4em;
@@ -38,6 +41,11 @@ body{
 
 #content {
     width:100%;
+    /* background: linear-gradient(130deg,#145359,#16929e);
+    background: linear-gradient(130deg,#192f47 30%,#6a2d84 70%,#91315c); */
+    /* background: linear-gradient(130deg,#192f47 30%,#145359 60%,#16929e); */
+    /* background: linear-gradient(130deg,#192f47 20%,#145359 60%,#16929e); */
+    
 }
 
 #stats-container{
@@ -57,7 +65,9 @@ body{
 }
 
 #gameboard{
-    background:navy;
+    /* background:navy; */
+    background: linear-gradient(130deg,#192f47 20%,#145359 60%,#16929e);
+    
     width:100%;
     min-height: 70vh;
     display:flex;
@@ -80,6 +90,7 @@ body{
     font-size: 2em;
     padding:10px;
     cursor:pointer;
+    color:#4bd1a7
     
 
 }
@@ -104,10 +115,11 @@ body{
     font-size: 3em;
     font-weight: bold;
     transition:transform 0.3s ease;
+    cursor:pointer;
 }
 
 .card-cover {
-    background:green;
+    background:#4bd1a7;
 }
 
 .card-face {

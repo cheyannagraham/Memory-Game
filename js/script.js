@@ -31,7 +31,7 @@ function fillBoard(template){
         tr.addClass('card-row');
         
         for(let j=0; j < c; j++){
-            tr.append(`<td class="card-td"><div data-card="${template[count][0]}${template[count][1]}" class="card card-face hide unsolved" style="color:${template[count][0]}">${template[count][1]}</div><div class="card card-cover"></div></td>`)
+            tr.append(`<td class="card-td"><div id="cd${count}" data-card="${template[count][0]}${template[count][1]}" class="card card-face hide unsolved" style="color:${template[count][0]}">${template[count][1]}</div><div id="cv${count}"class="card card-cover"></div></td>`)
             count++;
         }
         frag.append(tr);

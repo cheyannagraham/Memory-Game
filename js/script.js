@@ -374,16 +374,16 @@ function events(){
     
 
     $('#save-game').click(function(ev){
-        localStorage.setItem('gameboard',$('#gameboard').html());
+        localStorage.setItem('table',$('#game-table').html());
         localStorage.setItem('variables',JSON.stringify(variables));
     });
 
 
     $('#load-game').click(function(ev){
-        const gameboard = $('#gameboard');
+        const table = $('#game-table');
         
-        gameboard.empty();
-        gameboard.html(localStorage.getItem('gameboard'));
+        table.empty();
+        table.html(localStorage.getItem('table'));
 
         variables = JSON.parse(localStorage.getItem('variables'));
         variables.timerStart = false;

@@ -2,11 +2,11 @@ let variables = {
     timerStart : false,
     seconds : 0,
     time : '00:00',
-    turns : 0,
+    // turns : 0,
     moves : 0,
     games : 0,
     score : '***',
-    pair : [],
+    // pair : [],
     boardSize : 4,
     boardDim : '2x2',
     stats : [],
@@ -193,6 +193,7 @@ function showStats(){
     tbody.empty();
 
     let frag = $(document.createDocumentFragment());
+    console.log(variables.stats);
 
     variables.stats.forEach(function(stat){
         const tr = document.createElement('tr');
@@ -296,7 +297,7 @@ function cardClick(ev){
         $('#moves').text(variables.moves);
 
         //remove click event
-        $('#game-table').off();
+        $('#game-table').off('click','.card-cover');
 
         if($(`#${variables.match[0]}`).attr('data-card') != $(`#${variables.match[1]}`).attr('data-card')){
             miss();
@@ -335,11 +336,13 @@ function events(){
         $('#replay-container').addClass('hide');
     });
 
+
     $('.level-up-button').click(function(ev){
         variables.boardSize = variables.boardSize + 4;
         gamePlay();
         $('#replay-container').addClass('hide');
     });
+
 
     $('#level-down-button').click(function(ev){
         if(variables.boardSize > 4){
@@ -348,30 +351,37 @@ function events(){
         }
     });
 
+
     $('#restart-button,#cancel-button').click(function(ev){
         $('#restart-container').toggleClass('hide');
     });
+
 
     $('#restart-game-button').click(function(ev){
         $('#restart-container').toggleClass('hide');
         gamePlay();
     });
 
+
     $('#start-over-button').click(function(ev){
-        $('#restart-container').toggleClass('hide');  
-        variables = {...restart};
+        $('#restart-container').toggleClass('hide'); 
+        variables.stats = [];
+        variables.games = 0;
         gamePlay();
     });
 
+ 
     $('#show-stats').click(function(ev){
         showStats();
     });
     
+
     $('#save-game').click(function(ev){
         localStorage.setItem('gameboard',$('#gameboard').html());
         localStorage.setItem('variables',JSON.stringify(variables));
     });
-    
+
+
     $('#load-game').click(function(ev){
         const gameboard = $('#gameboard');
         
@@ -382,22 +392,29 @@ function events(){
         variables.timerStart = false;
         
         setVars();
-        cardClick();
+
+        $('#game-table').on('click','.card-cover',function(ev){
+            cardClick(ev);
+        });
+
         $('table').one('click',timer);
     });
 
+
     $('#menu-button-icon').click(function(ev){
         $('#main-buttons-container').removeClass('hide');
+
         setTimeout(function(){
             $('#main-buttons-container').css('transform','scaley(1)');
-
         },0);
     });
+
 
     $('#main-buttons-container,#close').click(function(ev){
         $('#main-buttons-container').css('transform','scaley(0)');
         $('#main-buttons-container').addClass('hide');
     });
+
 
     $('#close-stats').click(function(ev){
         $('#stats-display-container').addClass('hide');

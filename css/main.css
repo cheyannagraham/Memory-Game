@@ -11,9 +11,6 @@ body{
     
 }
 
-body {
-}
-
 .header{
     text-align: center;
     font-size:1.4em;
@@ -32,25 +29,36 @@ body {
     border: 2px solid blue;
 }
 
-#main-header h1{
+#main-header {
     width:100%;
-    font-size:2em;
-    padding:15px 0;
-
+    font-size: 2.8em;
+    padding:25px 0;
+    color:#496868;
+    background: #f0f4ef;
+    
 }
+
+.curly-brace{
+    font-size: 1.5em;
+}
+
+#hr{
+    height:5px;
+    background:#496868;
+    border:none;
+}
+
 
 #content {
     width:100%;
-    /* background: linear-gradient(130deg,#145359,#16929e);
-    background: linear-gradient(130deg,#192f47 30%,#6a2d84 70%,#91315c); */
-    /* background: linear-gradient(130deg,#192f47 30%,#145359 60%,#16929e); */
-    /* background: linear-gradient(130deg,#192f47 20%,#145359 60%,#16929e); */
-    
 }
 
 #stats-container{
     width:100%;
     font-size: 0.85em;
+    padding:10px 0;
+    color:#5f8c8c;
+    background: #f0f4ef;
 }
 
 #stats {
@@ -65,9 +73,7 @@ body {
 }
 
 #gameboard{
-    /* background:navy; */
     background: linear-gradient(130deg,#192f47 20%,#145359 60%,#16929e);
-    
     width:100%;
     min-height: 70vh;
     display:flex;
@@ -91,7 +97,6 @@ body {
     padding:10px;
     cursor:pointer;
     color:#4bd1a7
-    
 
 }
 

@@ -203,6 +203,36 @@ function showStats(){
     tbody.append(frag);
 }
 
+function miss(){
+    const cards = variables.match;
+    setTimeout(function(){
+        cards.forEach(function(card){
+            $(card).prev('.card-face').addClass('miss');
+        });
+        reverseFlip();
+        variables.turns++;
+
+    },600);
+
+    setTimeout(function(){
+        cards.forEach(function(c){
+            $(c).prev('.card-face').removeClass('miss');
+        });
+
+    },2000);
+}
+
+function match() {
+    const cards = variables.match;
+    setTimeout(function(){
+        cards.forEach(function(card){
+            $(card).prev('.card-face').addClass('match');
+        });
+
+    },600);
+
+}
+
 
 function cardClick(){
 
@@ -219,11 +249,11 @@ function cardClick(){
             $('#moves').text(variables.moves);
 
             if(variables.pair[0] != variables.pair[1]){
-                reverseFlip();
-                variables.turns++;
+                miss();
             }
 
             else if(variables.pair[0] === variables.pair[1]){
+                match();
                 variables.match.forEach(function(m){
                     $(m).removeClass('flipped')
                     $(m).prev('.card-face').removeClass('unsolved');
@@ -324,7 +354,6 @@ function events(){
         setVars();
         cardClick();
         $('table').one('click',timer);
-
     });
 
     $('#menu-button-icon').click(function(ev){
@@ -343,7 +372,6 @@ function events(){
     $('#close-stats').click(function(ev){
         $('#stats-display-container').addClass('hide');
     });
-
 }
 
 // TODO README

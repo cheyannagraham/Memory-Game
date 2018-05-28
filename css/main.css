@@ -139,3 +139,15 @@ body{
     text-align:center;
 }
 
+.miss {
+    border:5px solid yellow;
+    background: red;
+    /* transform:translate(20px,20%); */
+    /* transform: rotateX(180deg); */
+    transform: translateX(10px) rotate(10deg) translateY(5px);
+}
+
+.match {
+    background: lightblue;
+}
+

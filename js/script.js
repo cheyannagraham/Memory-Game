@@ -250,18 +250,12 @@ function match() {
                 variables.stats.push([variables.time,variables.score,variables.moves,variables.boardDim])
                 variables.timerStart=false;
                 $('#games').text(variables.games);
-            } 
+            }
 
+            $('#game-table').on('click','.card-cover',function(ev){
+                cardClick(ev);
+            });
         },1000);
-
-  
-            
-
-
-    //add click event
-    $('#game-table').on('click','.card-cover',function(ev){
-        cardClick(ev);
-    });
 }
 
 
@@ -403,5 +397,5 @@ function events(){
 
 // TODO README
 
-//prompt wont load
+//padding around table, fix padding in stats, media queries, better graphics
 

@@ -184,35 +184,31 @@ body{
    }
 
 @keyframes match {  
-from {       
-    transform:translatey(0px);
+    from {
+        transform:translatey(0px);
+    }
+
+    25% {
+        background:lightblue;
+        color:yellow;
+        transform:translatey(10px);
+    }
+
+    50% {
+        background:lightblue;
+        color:yellow;
+        transform:translatey(0px);
+    }
+
+    75% {
+        background:lightblue;
+        color:yellow;
+        transform:translatey(-10px);
+    }
+
+    to {
+        background:lightblue;
+        color:yellow;
+        transform:translatexy(0px);
+    }
 }
-25% {
-    background:lightblue;
-    color:yellow;    
-    transform:translatey(10px);
-}
-
-50% {
-    background:lightblue;
-    color:yellow;
-
-    
-    transform:translatey(0px);
-}
-
-75% {    background:lightblue;
-    color:yellow;
-
-
-    
-    transform:translatey(-10px);
-}
-
-to {    background:lightblue;
-    color:yellow;
-    transform:translatexy(0px);
-}
-}
-   
-

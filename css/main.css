@@ -111,7 +111,9 @@ body {
     min-width:48px;
     min-height:48px;
     margin:5px;
+    padding: 10px;
     border-radius:3px;
+    box-shadow: 0px 4px 10px 0px rgb(27, 49, 51);
     font-size: 3em;
     font-weight: bold;
     transition:transform 0.3s ease;
@@ -134,7 +136,6 @@ body {
 #main-buttons-container {
     transform:scaley(0);
     transition: transform 0.2s ease;
-
 }
 
 .hide {
@@ -149,10 +150,12 @@ body {
     right: 0;
     margin-left:auto;
     margin-right:auto;
-    background:gray;
+    background:#296266;
+    box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
     border-radius: 5px;
-    padding:10px;
+    padding:20px;
     text-align:center;
+    color:white;
 }
 
 
@@ -218,3 +221,5 @@ body {
         transform:translatexy(0px);
     }
 }
+
+/* shadow to cards; */

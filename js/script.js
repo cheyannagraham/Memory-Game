@@ -215,12 +215,12 @@ function miss(){
 
     setTimeout(function(){
         reverseFlip();
-    },100);
 
-    //add click event
-    $('#game-table').on('click','.card-cover',function(ev){
+        //add click event
+        $('#game-table').on('click','.card-cover',function(ev){
         cardClick(ev);
     });
+    },100);
 }
 
 

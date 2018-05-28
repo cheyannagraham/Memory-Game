@@ -93,7 +93,7 @@ function shuffleBoard(boardTemplate){
 
 
 function randomNumber(m) {
-    //helper code (2018-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random )
+    //helper code (2018-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random)
     return Math.floor(Math.random() * Math.floor(m));
 }
 
@@ -204,32 +204,35 @@ function showStats(){
 }
 
 function miss(){
-    const cards = variables.match;
-    setTimeout(function(){
-        cards.forEach(function(card){
-            $(card).prev('.card-face').addClass('miss');
-        });
-        reverseFlip();
-        variables.turns++;
+    console.log('miss');
+    // const cards = variables.match;
+    // setTimeout(function(){
+    //     cards.forEach(function(card){
+    //         $(card).prev('.card-face').addClass('miss');
+    //     });
+    //     reverseFlip();
+    //     variables.turns++;
 
-    },600);
+    // },600);
 
-    setTimeout(function(){
-        cards.forEach(function(c){
-            $(c).prev('.card-face').removeClass('miss');
-        });
+    // setTimeout(function(){
+    //     cards.forEach(function(c){
+    //         $(c).prev('.card-face').removeClass('miss');
+    //     });
 
-    },2000);
+    // },2000);
 }
 
 function match() {
-    const cards = variables.match;
-    setTimeout(function(){
-        cards.forEach(function(card){
-            $(card).prev('.card-face').addClass('match');
-        });
+    // const cards = variables.match;
+    // setTimeout(function(){
+    //     cards.forEach(function(card){
+    //         $(card).prev('.card-face').addClass('match');
+    //     });
 
-    },600);
+    // },600);
+    console.log('match');
+    
 
 }
 
@@ -237,18 +240,23 @@ function match() {
 function cardClick(){
 
     $('#game-table').on('click','.card-cover',function(ev){
-        variables.match.push(ev.target);
 
-        variables.pair.push($(ev.target).prev('.card-face').attr('data-card'));
-        $(ev.target).addClass('flipped');
-
+        variables.match.push($(ev.target).prev('.card-face').attr('id'));
+        // console.log(variables.match);
         flip(ev);
+        
 
-        if(variables.pair.length === 2){
+        // variables.pair.push($(ev.target).prev('.card-face').attr('data-card'));
+        // $(ev.target).addClass('flipped');
+
+
+        if(variables.match.length === 2){
             variables.moves++;
             $('#moves').text(variables.moves);
+            $('#game-table').off();
+            
 
-            if(variables.pair[0] != variables.pair[1]){
+            if($(`#${variables.match[0]}`).attr('data-card') != $(`#${variables.match[1]}`).attr('data-card')){
                 miss();
             }
 

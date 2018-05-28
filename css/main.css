@@ -122,6 +122,10 @@ body {
     background:#4bd1a7;
 }
 
+.card-cover:hover {
+    background: radial-gradient(white,#4bd1a7);
+}
+
 .card-face {
     transform: scalex(0);
     background: white;
@@ -160,8 +164,9 @@ body {
 }
 
 .match-animate {
-    animation-duration: .6s;
+    animation-duration: .8s;
     animation-name: match;
+
 }
 
 @keyframes miss {  
@@ -201,26 +206,18 @@ body {
     }
 
     25% {
-        background:lightblue;
-        color:yellow;
         transform:translatey(10px);
     }
 
     50% {
-        background:lightblue;
-        color:yellow;
         transform:translatey(0px);
     }
 
     75% {
-        background:lightblue;
-        color:yellow;
         transform:translatey(-10px);
     }
 
     to {
-        background:lightblue;
-        color:yellow;
         transform:translatexy(0px);
     }
 }

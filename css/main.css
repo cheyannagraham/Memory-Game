@@ -1,13 +1,9 @@
-html,body{
-    width:100vw;
-    height:100vh;
-}
-
-/* body{
+html,
+body{
     width:100%;
-    height:100%;
+    /* height:100%; */
 
-} */
+}
 
 * {
     padding: 0;
@@ -16,14 +12,14 @@ html,body{
 }
 
 .header{
+    width:100%;
     text-align: center;
     font-size:1.4em;
     color:#59ff5c;
-    margin:10px;
+    margin:10px 0;
 }
 
 .button{
-    /* height:5vh; */
     color:#126319;
     font-size:0.85em;
     border:none;
@@ -38,25 +34,18 @@ html,body{
 .button:hover {
     font-weight:bold;
     border:1px solid #e5ca1d;
-    
-}#main-header-container{
-    width:100vw;
-    height:25vh;
 }
 
-#hr{
-    width:100vw;
-    height:5vh;
-}
+/* MAIN HEADER */
 
-#content {
-    width:100vw;
-    height:70vh;
+#main-header-container{
+    width:100%;
+    /* height:20%; */
 }
 
 #main-header {
     width:100%;
-    height:100%;
+    /* height:100%; */
     font-size: 2.8em;
     color:#4bd1a7;
     background:#2b4959;
@@ -72,19 +61,25 @@ html,body{
 }
 
 #hr{
-    /* height:15px; */
+    width:100%;
+    /* height:5%; */
     background:#e5ca1d;
     border:none;
 }
 
 
-/* #content {
+/* MAIN CONTENT */
+
+#content {
     width:100%;
-    height:100%;
-} */
+    /* height:70%; */
+}
+
+/* STATS DISPLAY */
 
 #stats-container{
     width:100%;
+    /* height:15%; */
     font-size: 0.85em;
     padding:10px 0;
     background: #f0f4ef;
@@ -105,6 +100,8 @@ html,body{
 .stat-item {
     margin:5px;
 }
+
+/* HIDDEN BUTTONS CONTAINER */
 
 #main-buttons-container {
     transform:scaley(0);
@@ -134,17 +131,19 @@ html,body{
 }
 
 
+/* GAME SECTION */
+
 #gameboard{
     background: linear-gradient(130deg,#192f47 20%,#145359 60%,#16929e);
     width:100%;
     height:100%;
-    /* height: 75vh; */
+    /* height: 60%; */
     font-family : 'Bowlby One SC', cursive;
 
 }
 
 #menu-button-icon {
-    /* min-height:8vh; */
+    /* min-height:8%; */
     background:none;
     border:none;
     font-size: 2em;
@@ -152,6 +151,8 @@ html,body{
     cursor:pointer;
     color:#4bd1a7;
 }
+
+/* HIDDEN SAVED CONTAINER */
 
 #saved-container {
     transform: scaley(0);
@@ -167,28 +168,33 @@ html,body{
     margin:5px;
 }
 
+
+/* GAME TABLE */
+
+
 #table-container {
-    height:100%;
+    /* height:100%; */
     width:100%;
     overflow: auto;
     display:flex;
     justify-content: center;
     align-items: center;
-    /* min-height:62vh; */
+    /* min-height:62%; */
 }
 
 #game-table {
     margin:auto;
     border-collapse:collapse;
     padding:20px;
+
 }
 
 .card {
     display:flex;
     align-items: center;
     justify-content: center;
-    width:10vw;
-    height:10vw;
+    width:10%;
+    /* height:10%; */
     min-width:48px;
     min-height:48px;
     margin:5px;
@@ -218,8 +224,11 @@ html,body{
     display:none;
 }
 
+
+/* ASIDE CONTAINERS */
+
 .prompt {
-    width:60vw;
+    width:60%;
     position:absolute;
     top: 45%;
     left: 0;
@@ -243,6 +252,7 @@ html,body{
 #stats-table-container{
     display:flex;
     width:100%;
+    /* height:100%; */
     justify-content: center;
     align-items: center;
 }

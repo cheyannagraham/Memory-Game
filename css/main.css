@@ -127,13 +127,11 @@ body{
 }
 
 #saved-container {
-    position:relative;
-    left:47%;
-    top:0px;
-    min-height:5vh; 
-    width:6vw;
     transform: scaley(0);
-    
+    background:yellow;
+    text-align:center;
+    padding:3px;
+    margin:3px;
 }
 
 #saved-display {
@@ -244,7 +242,6 @@ body{
 .slide-down {
     animation-duration:1s;
     animation-name: slidedown;
-    background: yellow;
 }
 
 @keyframes miss {

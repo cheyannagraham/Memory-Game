@@ -32,7 +32,6 @@ body{
 
 .button:hover {
     font-weight:bold;
-    text-decoration:underline;
 }
 
 #main-header {

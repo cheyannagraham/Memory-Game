@@ -19,14 +19,17 @@ function fillBoard(template){
     let frag = $(document.createDocumentFragment());
     let count = 0;
     const [r,c] = findRC();
-    variables.boardDim = `${r}x${c}`;
+    const w = Math.min(r,c);
+    const h = Math.max(r,c);
+
+    variables.boardDim = `${h}x${w}`;
     $('#board-dim').text(variables.boardDim);
     
-    for(let i=0; i < r; i++){
+    for(let i=0; i < h; i++){
         const tr =$(document.createElement('tr'));
         tr.addClass('card-row');
         
-        for(let j=0; j < c; j++){
+        for(let j=0; j < w; j++){
             tr.append(`<td class="card-td"><div id="cd${count}" data-card="${template[count][0]}${template[count][1]}" class="card card-face hide unsolved" style="color:${template[count][0]}">${template[count][1]}</div><div id="cv${count}"class="card card-cover"></div></td>`)
             count++;
         }
@@ -34,6 +37,8 @@ function fillBoard(template){
     }
     
     gameBoard.append(frag);
+
+    $('.card').css({width:`${100/w}`,height:`${100/h}`});
 }
 
 

@@ -174,9 +174,19 @@ body{
 }
 
 #game-table {
-    margin:auto;
     border-collapse:collapse;
     padding:20px;
+
+}
+
+.card-row{
+/* display: flex; */
+/* width:100%; */
+}
+
+.card-td {
+    /* flex-basis:10vw;
+    flex-shrink: 1; */
 
 }
 
@@ -184,10 +194,10 @@ body{
     display:flex;
     align-items: center;
     justify-content: center;
-    width:10%;
-    height:10%;
-    min-width:48px;
-    min-height:48px;
+    /* width:10vh;
+    height:6vw; */
+    min-width:40px;
+    min-height:40px;
     margin:5px;
     padding: 10px;
     border-radius:3px;
@@ -243,7 +253,6 @@ body{
 #stats-table-container{
     display:flex;
     width:100%;
-    /* height:100%; */
     justify-content: center;
     align-items: center;
 }

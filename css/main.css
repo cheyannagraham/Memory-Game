@@ -32,26 +32,27 @@ body{
 
 .button:hover {
     font-weight:bold;
+    border:1px solid #e5ca1d;
+    
 }
 
 #main-header {
     width:100%;
     font-size: 2.8em;
     padding:25px 0;
-    color:#496868;
-    background: #f0f4ef;
-    /* background: #d6ffd6; */
-    
+    color:#4bd1a7;
+    background:#2b4959;
     margin:0;
 }
 
 .curly-brace{
     font-size: 1.5em;
+    color:#e5ca1d;
 }
 
 #hr{
-    height:5px;
-    background:#496868;
+    height:15px;
+    background:#e5ca1d;
     border:none;
 }
 
@@ -128,16 +129,16 @@ body{
 
 #saved-container {
     transform: scaley(0);
-    background:yellow;
+    background:#e5ca1d;
     text-align:center;
     padding:3px;
     margin:3px;
+    color:#126319;
 }
 
 #saved-display {
     padding:5px;
     margin:5px;
-
 }
 
 #table-container {
@@ -187,8 +188,6 @@ body{
     background: #f0f4ef;
 }
 
-
-
 .hide {
     display:none;
 }
@@ -204,6 +203,7 @@ body{
     background:#296266;
     box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
     border-radius: 5px;
+    border:1px solid #e5ca1d;
     padding:30px;
     text-align:center;
     color: #f0f4ef;

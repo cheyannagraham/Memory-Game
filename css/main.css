@@ -86,7 +86,6 @@ body{
 #main-buttons-container {
     transform:scaley(0);
     transition: transform 0.2s ease;
-    /* background: #f0f4ef; */
     background: #d6ffd6;
     
 }
@@ -112,7 +111,7 @@ body{
 #gameboard{
     background: linear-gradient(130deg,#192f47 20%,#145359 60%,#16929e);
     width:100%;
-    min-height: 70vh;
+    min-height: 75vh;
     font-family : 'Bowlby One SC', cursive;
 
 }
@@ -125,6 +124,22 @@ body{
     padding:15px;
     cursor:pointer;
     color:#4bd1a7;
+}
+
+#saved-container {
+    position:relative;
+    left:47%;
+    top:0px;
+    min-height:5vh; 
+    width:6vw;
+    transform: scaley(0);
+    
+}
+
+#saved-display {
+    padding:5px;
+    margin:5px;
+
 }
 
 #table-container {
@@ -222,9 +237,14 @@ body{
 }
 
 .match-animate {
-    animation-duration: .8s;
+    animation-duration: 1s;
     animation-name: match;
+}
 
+.slide-down {
+    animation-duration:1s;
+    animation-name: slidedown;
+    background: yellow;
 }
 
 @keyframes miss {
@@ -278,5 +298,22 @@ body{
     to {
         background:#59ff5c;
         transform:translatexy(0px);
+    }
+}
+
+@keyframes slidedown {
+    from{        
+        transform:scaley(0);
+    }
+
+    10%{
+        transform: scaley(1);
+    }
+    90%{
+        transform: scaley(1);
+    }
+
+    to {
+        transform: scaley(0);
     }
 }

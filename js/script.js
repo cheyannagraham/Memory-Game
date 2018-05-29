@@ -354,6 +354,16 @@ function events(){
     $('#save-game').click(function(ev){
         localStorage.setItem('table',$('#game-table').html());
         localStorage.setItem('variables',JSON.stringify(variables));
+        const saved = $('#saved-container')
+        setTimeout(function(){
+            saved.addClass('slide-down');
+            saved.removeClass('hide');
+        },500);
+
+        setTimeout(function(){
+            saved.addClass('hide');
+            saved.removeClass('slide-down');
+        },2000);
     });
 
 
@@ -398,6 +408,6 @@ function events(){
 
 // TODO README
 
-//padding around table, fix padding in stats, media queries, better graphics
+//media queries
 // game save confirmation
 

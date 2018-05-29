@@ -236,7 +236,7 @@ function match() {
     
         setTimeout(function(){
             $('.animate').addClass('match-animate');
-            $('.animate').css({'color':'black','background': '#59ff5c'});
+            $('.animate').css({'color':'#6f8284','background': '#59ff5c'});
         },500);
     
         setTimeout(function(){

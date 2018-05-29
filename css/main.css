@@ -152,7 +152,7 @@ body{
     text-align:center;
     padding:3px;
     margin:3px;
-    color:#126319;
+    color:black;
 }
 
 #saved-display {
@@ -166,8 +166,7 @@ body{
 
 #table-container {
     width:100%;
-    min-height: 65vh;
-    overflow: auto;
+    /* overflow: auto; */
     display:flex;
     justify-content: center;
     align-items: center;
@@ -175,29 +174,27 @@ body{
 
 #game-table {
     border-collapse:collapse;
-    padding:20px;
+    padding:10px;
+    width:100%;
+    min-height: 40%;   
 
 }
 
-.card-row{
-/* display: flex; */
-/* width:100%; */
+.card-row {
+    display:flex;
+    justify-content: center;
+    align-items:center;
 }
 
-.card-td {
-    /* flex-basis:10vw;
-    flex-shrink: 1; */
-
-}
 
 .card {
     display:flex;
     align-items: center;
     justify-content: center;
-    /* width:10vh;
-    height:6vw; */
     min-width:40px;
     min-height:40px;
+    max-width: 150px;
+    max-height:150px;
     margin:5px;
     padding: 10px;
     border-radius:3px;

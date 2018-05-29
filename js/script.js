@@ -38,7 +38,7 @@ function fillBoard(template){
     
     gameBoard.append(frag);
 
-    $('.card').css({width:`${100/w}`,height:`${100/h}`});
+    $('.card').css({width:`${60/w}vw`,height:`${60/h}vh`});
 }
 
 
@@ -66,8 +66,8 @@ function findRC(){
 
 function createBoard(){
     let matches =variables.boardSize/2;
-    let color = 'blue green red purple pink orange yellow black gray black magenta'.split(' ');
-    let sym = '! @ # $ % ^ & * ( ) { } < > ~ / | [ ] ? ; :'.split(' ');
+    let color ='gray #ceb40e brown blue green red purple magenta orange black'.split(' ');
+    let sym = '! @ # $ % " \' ^ & * = + - _ ( ) { } < > ~ / \\ | [ ] ? ; . , :'.split(' ');
     let boardTemplate = [];
     
     for( let i=0; i < matches; i++){

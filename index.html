@@ -26,7 +26,7 @@
         <main id="content">
             <section id="stats-container">
 
-                <h2 class="header">Stats</h2>
+                <h2 class="header" id="stats-header">Stats</h2>
                 
                 <div id="stats">
                     <p class="stat-item"><span class="stats-label">Score: </span><span data-score="***" id="score"></span></p>
@@ -40,13 +40,13 @@
 
             <aside id="main-buttons-container" class="hide">
                 <ul id="buttons-table">
-                    <li><button class="main-button" id="level-down-button">Level Down</button></li>
-                    <li><button class="level-up-button main-button">Level Up</button></li>
-                    <li><button class="main-button" id ="restart-button">Restart</button></li>
-                    <li><button class="main-button" id ="show-stats">MyStats</button></li>
-                    <li><button class="main-button" id ="save-game">Save Game</button></li>
-                    <li><button class="main-button" id ="load-game">Load Game</button></li>
-                    <li><button class="main-button" id ="close">Close</button></li>
+                    <li><button class="button main-button" id="level-down-button">Level Down</button></li>
+                    <li><button class="button level-up-button main-button">Level Up</button></li>
+                    <li><button class="button main-button" id ="restart-button">Restart</button></li>
+                    <li><button class="button main-button" id ="show-stats">MyStats</button></li>
+                    <li><button class="button main-button" id ="save-game">Save Game</button></li>
+                    <li><button class="button main-button" id ="load-game">Load Game</button></li>
+                    <li><button class="button main-button" id ="close">Close</button></li>
                 </ul>
             </aside>
 
@@ -61,41 +61,44 @@
         </main>
 
         <aside id="replay-container" class="hide prompt">
-            <h1>Winner!</h1>
-                <button id="replay-button">Play Again!</button>
-                <button class="level-up-button">Level Up!</button>
+            <h1 class="header" >Winner!</h1>
+                <button class="button" id="replay-button">Play Again!</button>
+                <button class="button level-up-button">Level Up!</button>
         </aside>
 
         <aside id = "restart-container" class="hide prompt">
-            <h2>Restart</h2>
+            <h2 class="header" >Restart</h2>
             
             <p id="restart-text">
                 Would you like to restart the current game or 
-                start over<small>(clears-stats)?</small>
+                start over<small>(clear streak)?</small>
             </p>
 
-            <button id="restart-game-button">Current Game</button>
-            <button id="start-over-button">Start Over</button>
-            <button id="cancel-button">Cancel</button>
+            <button class="button" id="restart-game-button">Current Game</button>
+            <button class="button" id="start-over-button">Start Over</button>
+            <button class="button" id="cancel-button">Cancel</button>
         </aside>
 
         <aside id="stats-display-container" class="hide prompt">
-            <h2>Stats</h2>
+            <h2 class="header" >Stats</h2>
 
-            <table id= "stats-table">
+            <div id="stats-table-container">
+                <table id= "stats-table">
+                    <thead>
+                        <tr id="table-header">
+                            <th class="stats-table-label">Time</th>
+                            <th class="stats-table-label">Score</th>
+                            <th class="stats-table-label">Moves</th>
+                            <th class="stats-table-label">Board</th>
+                        </tr>
+                    </thead>
 
-                <thead>
-                    <tr id="table-header">
-                        <th class="table-head-label">Time</th>
-                        <th class="table-head-label">Score</th>
-                        <th class="table-head-label">Moves</th>
-                        <th class="table-head-label">Board</th>
-                    </tr>
-                </thead>
+                    <tbody id="stats-table-body"></tbody>
+                </table>
 
-                <tbody id="stats-table-body"></tbody>
-            </table>
-            <button id="close-stats">Close</button>
+            </div>
+
+            <button class="button" id="close-stats">Close</button>
         </aside>
     </body>
 </html>

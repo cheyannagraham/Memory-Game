@@ -13,18 +13,26 @@ body{
 .header{
     text-align: center;
     font-size:1.4em;
+    color:#59ff5c;
+    margin:10px;
 }
 
 .button{
-    background:orange;
-    border:2px solid gray;
-    border-radius: 5px;
-    padding:2px;
+    height:5vh;
+    color:#126319;
+    font-size:0.7em;
+    border:none;
     cursor:pointer;
+    border-radius: 5px;
+    box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    padding:5px;
+    margin: 5px;
+    
 }
 
 .button:hover {
-    border: 2px solid blue;
+    font-weight:bold;
+    text-decoration:underline;
 }
 
 #main-header {
@@ -33,7 +41,9 @@ body{
     padding:25px 0;
     color:#496868;
     background: #f0f4ef;
+    /* background: #d6ffd6; */
     
+    margin:0;
 }
 
 .curly-brace{
@@ -55,8 +65,12 @@ body{
     width:100%;
     font-size: 0.85em;
     padding:10px 0;
-    color:#af551d;
     background: #f0f4ef;
+    color:#126319;
+}
+
+#stats-header {
+    color:#126319;
 }
 
 #stats {
@@ -70,19 +84,38 @@ body{
     margin:5px;
 }
 
+#main-buttons-container {
+    transform:scaley(0);
+    transition: transform 0.2s ease;
+    /* background: #f0f4ef; */
+    background: #d6ffd6;
+    
+}
+
+.main-button {
+    width:100%;
+    box-shadow: none;
+    background:none;
+    font-size:0.97em;
+    margin:0;
+    border-radius:0;
+    cursor:pointer;
+    color: #254f59;
+}
+
+.main-button:hover{
+    background:#266368;
+    color: #d6ffd6;
+    font-weight:normal;
+}
+
+
 #gameboard{
     background: linear-gradient(130deg,#192f47 20%,#145359 60%,#16929e);
     width:100%;
     min-height: 70vh;
     font-family : 'Bowlby One SC', cursive;
 
-}
-
-.main-button {
-    width:100%;
-    height:5vh;
-    background:none;
-    font-size:0.97em;
 }
 
 #menu-button-icon {
@@ -134,18 +167,15 @@ body{
 }
 
 .card-cover:hover {
-    background: radial-gradient(white,#4bd1a7);
+    background: radial-gradient(#f0f4ef,#4bd1a7);
 }
 
 .card-face {
     transform: scalex(0);
-    background: white;
+    background: #f0f4ef;
 }
 
-#main-buttons-container {
-    transform:scaley(0);
-    transition: transform 0.2s ease;
-}
+
 
 .hide {
     display:none;
@@ -162,9 +192,26 @@ body{
     background:#296266;
     box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
     border-radius: 5px;
-    padding:20px;
+    padding:30px;
     text-align:center;
-    color:#fcf82d;
+    color: #f0f4ef;
+    font-size:1em;
+}
+
+#restart-text {
+    margin:15px;
+}
+
+#stats-table-container{
+    display:flex;
+    width:100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.stats-table-label {
+    padding:5px;
+    margin:5px;
 }
 
 
@@ -215,18 +262,22 @@ body{
     }
 
     25% {
+        background:#59ff5c;
         transform:translatey(10px);
     }
 
     50% {
+        background:#59ff5c;
         transform:translatey(0px);
     }
 
     75% {
+        background:#59ff5c;
         transform:translatey(-10px);
     }
 
     to {
+        background:#59ff5c;
         transform:translatexy(0px);
     }
 }

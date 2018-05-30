@@ -4,9 +4,6 @@
         
     }
 
-    .card {
-        font-size: 1em;
-    }
 }
 
 
@@ -15,9 +12,16 @@
         font-size:1.2em;
        
     }
-    .card {
-        font-size: 10vw;
+
+}
+
+
+@media screen and (min-width:800px){
+    html {
+        font-size:1.5em;
+       
     }
+
 }
 
 @media screen and (min-width:1110px){

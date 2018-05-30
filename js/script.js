@@ -183,6 +183,9 @@ function timer(){
 
 function replay(){
     $('#replay-container').removeClass('hide');
+    $('#replay-score').text(variables.score);
+    $('#replay-time').text(variables.time);
+    $('#replay-moves').text(variables.moves);
 }
 
 

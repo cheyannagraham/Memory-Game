@@ -14,27 +14,28 @@ let game = {
 
 function fillBoard(template){
     let gameBoard=$('#game-table');
-    gameBoard.empty();
-    
     let frag = $(document.createDocumentFragment());
     let count = 0;
     const [r,c] = findRC();
     const w = Math.min(r,c);
     const h = Math.max(r,c);
 
-    game.boardDim);
-    
+    gameBoard.empty();
+
+    game.boardDim = `${h}x${w}`;
+    $('#board-dim').text(game.boardDim);
+
     for(let i=0; i < h; i++){
         const tr =$(document.createElement('tr'));
         tr.addClass('card-row');
-        
+
         for(let j=0; j < w; j++){
-            tr.append(`<td class="card-td"><div id="cd${count}" data-card="${template[count][0]}${template[count][1]}" class="card card-face hide unsolved" style="color:${template[count][0]}">${template[count][1]}</div><div id="cv${count}"class="card card-cover"></div></td>`)
+            tr.append(`<td class="card-td"><div id="cd${count}" data-card="${template[count][0]}${template[count][1]}" class="card card-face hide unsolved" style="color:${template[count][0]}">${template[count][1]}</div><div id="cv${count}"class="card card-cover"></div></td>`);
             count++;
         }
         frag.append(tr);
     }
-    
+
     gameBoard.append(frag);
 
     $('.card').css({width:`${60/w}vw`,height:`${60/h}vh`,'font-size':``});
@@ -46,14 +47,14 @@ function findRC(){
     //get rows & columns
     const tSize = game.boardSize;
     const sqrt = Math.sqrt(tSize);
-        
+
     if(tSize % sqrt === 0){
         return [sqrt,sqrt];
 
     }else{
-        let ratios = {}
+        let ratios = {};
         const start = (tSize/2)-1;
-        
+
         for (let j = start; j > 0; j--){
             if (tSize%j ===0){
             ratios[`${Math.abs(j-(tSize/j))}`] = [j,tSize/j];
@@ -69,7 +70,7 @@ function createBoard(){
     let color ='gray #ceb40e brown blue green red purple magenta orange black'.split(' ');
     let sym = '! @ # $ % " \' ^ & * = + - _ ( ) { } < > ~ / \\ | [ ] ? ; . , :'.split(' ');
     let boardTemplate = [];
-    
+
     for( let i=0; i < matches; i++){
             boardTemplate.push([color[randomNumber(color.length)],sym[randomNumber(sym.length)]]);
     }
@@ -82,7 +83,7 @@ function createBoard(){
 function shuffleBoard(boardTemplate){
     let shuffled = [];
     const len = boardTemplate.length;
-    
+
     for(let i = 0; i < len; i++){
         let randNum=randomNumber(boardTemplate.length);
             shuffled.push(boardTemplate[randNum]);
@@ -105,16 +106,15 @@ function flip(ev){
         setTimeout(function(){
           $(ev.target).addClass('hide');
           $(ev.target).prev('.card').removeClass('hide');
-          
+
           setTimeout(function(){
             $(ev.target).prev('.card').css('transform','scalex(1)');
           },50);
-        },300); 
+        },300);
 }
 
 
 function reverseFlip(){
-
     for (let card of game.match){
         setTimeout(function(){
             $(`#${card}`).css('transform','scalex(0)');
@@ -154,24 +154,24 @@ function setVars() {
     $('#moves').text(game.moves);
     $('#games').text(game.games);
     $('#score').text(game.score);
-    console.log("vars",game.match);
 }
 
 
 function timer(){
     const timer = window.setInterval(time, 1000);
     let count = game.seconds;
-    game.timerStart=true;
     let t = new Date();
+
+    game.timerStart=true;
 
     function time() {
         if(!game.timerStart){
             window.clearInterval(timer);
-        }
-        else {
+
+        } else {
             t.setSeconds(count);
             t.setMinutes(count/60);
-            game.time = `${t.getMinutes().toLocaleString('en-us',{minimumIntegerDigits:2})}:${t.getSeconds().toLocaleString('en-us',{minimumIntegerDigits:2})}`; 
+            game.time = `${t.getMinutes().toLocaleString('en-us',{minimumIntegerDigits:2})}:${t.getSeconds().toLocaleString('en-us',{minimumIntegerDigits:2})}`;
             $('#timer').text(game.time);
             count ++;
             game.seconds = count;
@@ -191,15 +191,18 @@ function replay(){
 function showStats(){
     $('#stats-display-container').removeClass('hide');
     let tbody = $('#stats-table-body');
+    let frag = $(document.createDocumentFragment());
+
     tbody.empty();
 
-    let frag = $(document.createDocumentFragment());
-    console.log(game.stats.forEach(function(stat){
+    game.stats.forEach(function(stat){
         const tr = document.createElement('tr');
-        $(tr).addClass('stat-row')
+        $(tr).addClass('stat-row');
+
         stat.forEach(function(s){
             $(tr).append(`<td class="stat-info">${s}</td>`);
         });
+
         frag.append(tr);
     });
 
@@ -209,7 +212,7 @@ function showStats(){
 
 function miss(){
     game.match.forEach(function(card){
-    $(`#${card}`).addClass('animate');
+        $(`#${card}`).addClass('animate');
     });
 
     setTimeout(function(){
@@ -226,56 +229,78 @@ function miss(){
         //add click event
         $('#game-table').on('click','.card-cover',function(ev){
         cardClick(ev);
-    });
+        });
+
     },100);
 }
 
 
 function match() {
-    game.timerStart=false;
-                $('#games').text(variables.games);
-            }
+    game.match.forEach(function(card){
+        $(`#${card}`).addClass('animate');
+    });
 
-            $('#game-table').on('click','.card-cover',function(ev){
-                cardClick(ev);
-            });
-        },1000);
+    setTimeout(function(){
+        $('.animate').addClass('match-animate');
+        $('.animate').css({'color':'#424d4f','background': '#59ff5c'});
+    },500);
+
+    setTimeout(function(){
+        game.match.forEach(function (card){
+            $(`#${card}`).removeClass('animate match-animate unsolved');
+        });
+    },800);
+
+    setTimeout(function(){
+        game.match = [];
+
+        //game complete
+        if($('.unsolved').length===0){
+            replay();
+            game.games++;
+            game.stats.push([game.time,game.score,game.moves,game.boardDim]);
+            game.timerStart=false;
+            $('#games').text(game.games);
+        }
+
+        $('#game-table').on('click','.card-cover',function(ev){
+            cardClick(ev);
+        });
+
+    },1000);
 }
 
 
 function cardClick(ev){
-    variables.match.push($(ev.target).prev('.card-face').attr('id'));
+    game.match.push($(ev.target).prev('.card-face').attr('id'));
     flip(ev);
-    console.log("click",variables.match)
-    
 
-    if(variables.match.length === 2){
-        console.log("match",variables.match)
-        variables.moves++;
-        $('#moves').text(variables.moves);
+    if(game.match.length === 2){
+        game.moves++;
+        $('#moves').text(game.moves);
 
             //score ratings
-        if (variables.moves/variables.boardSize <= 0.75){
-            variables.score =('\u2605\u2605\u2605');
-            $('#score').text(variables.score);
-        
-        }else if (variables.moves > variables.boardSize){
-            variables.score =('\u2605');
-            $('#score').text(variables.score);
-        
+        if (game.moves/game.boardSize <= 0.75){
+            game.score =('\u2605\u2605\u2605');
+            $('#score').text(game.score);
+
+        }else if (game.moves > game.boardSize){
+            game.score =('\u2605');
+            $('#score').text(game.score);
+
         }else {
-            variables.score =('\u2605\u2605');
-            $('#score').text(variables.score);
+            game.score =('\u2605\u2605');
+            $('#score').text(game.score);
         }
 
         //remove click event
         $('#game-table').off('click','.card-cover');
 
-        if($(`#${variables.match[0]}`).attr('data-card') != $(`#${variables.match[1]}`).attr('data-card')){
+        if($(`#${game.match[0]}`).attr('data-card') != $(`#${game.match[1]}`).attr('data-card')){
             miss();
         }
 
-        else if ($(`#${variables.match[0]}`).attr('data-card') === $(`#${variables.match[1]}`).attr('data-card')){
+        else if ($(`#${game.match[0]}`).attr('data-card') === $(`#${game.match[1]}`).attr('data-card')){
             match();
         }
     }
@@ -297,12 +322,13 @@ function setFont(){
 
     if(cardHeight < cardWidth){
         $('.card').css('font-size',`${cardHeight-15}px`);
+
     }else if(cardWidth < cardHeight){
         $('.card').css('font-size',`${cardWidth-15}px`);
     }
+
     else{
         $('.card').css('font-size',`${cardWidth-20}px`);
-        
     }
 }
 
@@ -315,15 +341,15 @@ function events(){
 
 
     $('.level-up-button').click(function(ev){
-        variables.boardSize = variables.boardSize + 4;
+        game.boardSize = game.boardSize + 4;
         gamePlay();
         $('#replay-container').addClass('hide');
     });
 
 
     $('#level-down-button').click(function(ev){
-        if(variables.boardSize > 4){
-            variables.boardSize = variables.boardSize-4;
+        if(game.boardSize > 4){
+            game.boardSize = game.boardSize-4;
             gamePlay();
         }
     });
@@ -341,11 +367,11 @@ function events(){
 
 
     $('#start-over-button').click(function(ev){
-        $('#restart-container').toggleClass('hide'); 
-        variables.stats = [];
-        variables.games = 0;
-        variables.boardSize= 4;
-        
+        $('#restart-container').toggleClass('hide');
+        game.stats = [];
+        game.games = 0;
+        game.boardSize= 4;
+
         gamePlay();
     });
 
@@ -353,14 +379,13 @@ function events(){
     $('#show-stats').click(function(ev){
         showStats();
     });
-    
+
 
     $('#save-game').click(function(ev){
         localStorage.setItem('table',$('#game-table').html());
-        localStorage.setItem('variables',JSON.stringify(variables));
-        console.log("save",variables.match)
-        const saved = $('#saved-container')
-        
+        localStorage.setItem('game',JSON.stringify(game));
+        const saved = $('#saved-container');
+
         setTimeout(function(){
             saved.addClass('slide-down');
             saved.removeClass('hide');
@@ -375,14 +400,13 @@ function events(){
 
     $('#load-game').click(function(ev){
         const table = $('#game-table');
-        
+
         table.empty();
         table.html(localStorage.getItem('table'));
 
-        variables = JSON.parse(localStorage.getItem('variables'));
-        variables.timerStart = false;
-        console.log("load",variables.match)
-        
+        game = JSON.parse(localStorage.getItem('game'));
+        game.timerStart = false;
+
         setVars();
 
         $('table').one('click',timer);
@@ -410,5 +434,5 @@ function events(){
 
     $(window).resize(function(){
         setFont();
-    })
+    });
 }

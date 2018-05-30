@@ -1,170 +1,182 @@
+/* WHOLE DOCUMENT */
+
+
 html,
-body{
-    width:100%;
+body {
+    width: 100%;
 }
 
-* {
+*  {
     padding: 0;
     margin: 0;
     font: 1em 'Alfa Slab One', cursive;
 }
 
-.header{
-    width:100%;
+.header {
+    width: 100%;
     text-align: center;
-    font-size:1.4em;
-    color:#59ff5c;
-    margin:10px 0;
+    font-size: 1.4em;
+    color: #59ff5c;
+    margin: 10px 0;
 }
 
-.button{
-    color:#126319;
-    font-size:0.85em;
-    border:none;
-    cursor:pointer;
+.button {
+    color: #126319;
+    font-size: 0.85em;
+    border: none;
+    cursor: pointer;
     border-radius: 5px;
     box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
-    padding:5px;
+    padding: 5px;
     margin: 5px;
 
 }
 
 .button:hover {
-    font-weight:bold;
-    border:1px solid #e5ca1d;
+    font-weight: bold;
+    border: 1px solid #e5ca1d;
 }
+
 
 /* MAIN HEADER */
 
-#main-header-container{
-    width:100%;
+
+#main-header-container {
+    width: 100%;
 }
 
 #main-header {
-    width:100%;
+    width: 100%;
     font-size: 2.8em;
-    color:#4bd1a7;
-    background:#2b4959;
-    margin:0;
-    display:flex;
+    color: #4bd1a7;
+    background: #2b4959;
+    margin: 0;
+    display: flex;
     justify-content: center;
     align-items: center;
-    padding:10px 0;
+    padding: 10px 0;
 }
 
-.curly-brace{
+.curly-brace {
     font-size: 1.5em;
-    color:#e5ca1d;
+    color: #e5ca1d;
 }
 
-#hr{
-    width:100%;
-    height:15px;
-    background:#e5ca1d;
-    border:none;
+#hr {
+    width: 100%;
+    height: 15px;
+    background: #e5ca1d;
+    border: none;
 }
 
 
 /* MAIN CONTENT */
 
+
 #content {
-    width:100%;
+    width: 100%;
 }
+
 
 /* STATS DISPLAY */
 
-#stats-container{
-    width:100%;
+
+#stats-container {
+    width: 100%;
     font-size: 0.85em;
-    padding:10px 0;
+    padding: 10px 0;
     background: #f0f4ef;
-    color:#126319;
+    color: #126319;
 }
 
 #stats-header {
-    color:#126319;
+    color: #126319;
 }
 
 #stats {
-    display:flex;
+    display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    align-items:center;
+    align-items: center;
     margin: 5px;
 }
 
 .stat-item {
-    margin:5px 0;
-    padding:5px;
+    margin: 5px 0;
+    padding: 5px;
 }
 
 #score {
-    color:#ddc618;
-    font-size:2em;
+    color: #ddc618;
+    font-size: 2em;
 }
 
 /* HIDDEN BUTTONS CONTAINER */
 
+
 #main-buttons-container {
-    transform:scaley(0);
+    transform: scaley(0);
     transition: transform 0.2s ease;
     background: #f0f4ef;
 }
 
-#buttons-list{
-    list-style-type:none;
+#buttons-list {
+    list-style-type: none;
 }
 
 .main-button {
-    width:100%;
+    width: 100%;
     box-shadow: none;
-    background:none;
-    font-size:0.97em;
-    margin:0;
-    border-radius:0;
-    cursor:pointer;
+    background: none;
+    font-size: 0.97em;
+    margin: 0;
+    border-radius: 0;
+    cursor: pointer;
     color: #254f59;
 }
 
-.main-button:hover{
-    background:#266368;
+.main-button:hover {
+    background: #266368;
     color: #d6ffd6;
-    font-weight:normal;
+    font-weight: normal;
 }
 
 
 /* GAME SECTION */
 
-#game-board{
+
+#game-board {
     background: linear-gradient(130deg,#192f47 20%,#145359 60%,#16929e);
-    width:100%;
+    width: 100%;
     font-family : 'Bowlby One SC', cursive;
 
 }
 
 #menu-button-icon {
-    background:none;
-    border:none;
+    background: none;
+    border: none;
     font-size: 2em;
-    padding:15px;
-    cursor:pointer;
-    color:#4bd1a7;
+    padding: 15px;
+    cursor: pointer;
+    color: #4bd1a7;
 }
+
 
 /* HIDDEN SAVED CONTAINER */
 
+
 #saved-container {
     transform: scaley(0);
-    background:#e5ca1d;
-    text-align:center;
-    padding:3px;
-    margin:3px;
-    color:black;
+    background: #e5ca1d;
+    text-align: center;
+    padding: 3px;
+    margin: 3px;
+    color: black;
 }
 
 #saved-display {
-    padding:5px;
-    margin:5px;
+    padding: 5px;
+    margin: 5px;
 }
 
 
@@ -172,48 +184,47 @@ body{
 
 
 #table-container {
-    width:100%;
-    display:flex;
+    width: 100%;
+    display: flex;
     justify-content: center;
     align-items: center;
 }
 
 #game-table {
-    border-collapse:collapse;
-    padding:10px;
-    width:100%;
+    border-collapse: collapse;
+    padding: 10px;
+    width: 100%;
     min-height: 40%;
-    font-size:1.5em;
+    font-size: 1.5em;
 
 }
 
 .card-row {
-    display:flex;
+    display: flex;
     justify-content: center;
-    align-items:center;
+    align-items: center;
 }
 
 
 .card {
-    display:flex;
+    display: flex;
     align-items: center;
     justify-content: center;
-    min-width:40px;
-    min-height:40px;
+    min-width: 40px;
+    min-height: 40px;
     max-width: 150px;
-    max-height:150px;
-    margin:5px;
+    max-height: 150px;
+    margin: 5px;
     padding: 10px;
-    border-radius:3px;
+    border-radius: 3px;
     box-shadow: 0px 4px 10px 0px rgb(27, 49, 51);
-    /* font-size: 3em; */
     font-weight: bold;
-    transition:transform 0.3s ease;
-    cursor:pointer;
+    transition: transform 0.3s ease;
+    cursor: pointer;
 }
 
 .card-cover {
-    background:#4bd1a7;
+    background: #4bd1a7;
 }
 
 .card-cover:hover {
@@ -226,51 +237,53 @@ body{
 }
 
 .hide {
-    display:none;
+    display: none;
 }
 
 
 /* ASIDE CONTAINERS */
 
+
 .prompt {
-    width:60%;
-    position:absolute;
+    width: 60%;
+    position: absolute;
     top: 48%;
     left: 0;
     right: 0;
-    margin-left:auto;
-    margin-right:auto;
-    background:#296266;
+    margin-left: auto;
+    margin-right: auto;
+    background: #296266;
     box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
     border-radius: 5px;
-    border:1px solid #e5ca1d;
-    padding:30px;
-    text-align:center;
+    border: 1px solid #e5ca1d;
+    padding: 30px;
+    text-align: center;
     color: #f0f4ef;
-    font-size:1em;
+    font-size: 1em;
 }
 
 #restart-text {
-    margin:15px;
+    margin: 15px;
 }
 
-#stats-table-container{
-    display:flex;
-    width:100%;
+#stats-table-container {
+    display: flex;
+    width: 100%;
     justify-content: center;
     align-items: center;
 }
 
 .stats-table-label {
-    padding:5px;
-    margin:5px;
+    padding: 5px;
+    margin: 5px;
 }
 
 
 /* ANIMATION */
 
+
 .miss-animate {
-    animation-duration: .4s;
+    animation-duration: 0.4s;
     animation-name: miss;
 }
 
@@ -280,73 +293,74 @@ body{
 }
 
 .slide-down {
-    animation-duration:1s;
+    animation-duration: 1s;
     animation-name: slidedown;
 }
 
 @keyframes miss {
     from {
-      transform:translatex(0px);
+      transform: translatex(0px);
     }
 
     25% {
-        background:red;
-        color:black;
-        transform:translatex(10px);
+        background: red;
+        color: black;
+        transform: translatex(10px);
     }
 
     50% {
-        background:red;
-        color:black;
-        transform:translatex(0px);
+        background: red;
+        color: black;
+        transform: translatex(0px);
     }
 
     75% {
-        background:red;
-        color:black;
-        transform:translatex(-10px);
+        background: red;
+        color: black;
+        transform: translatex(-10px);
     }
 
     to {
-      transform:translatex(0px);
+      transform: translatex(0px);
     }
    }
 
 @keyframes match {
     from {
-        transform:translatey(0px);
+        transform: translatey(0px);
     }
 
     25% {
-        background:#59ff5c;
-        transform:translatey(10px);
+        background: #59ff5c;
+        transform: translatey(10px);
     }
 
     50% {
-        background:#59ff5c;
-        transform:translatey(0px);
+        background: #59ff5c;
+        transform: translatey(0px);
     }
 
     75% {
-        background:#59ff5c;
-        transform:translatey(-10px);
+        background: #59ff5c;
+        transform: translatey(-10px);
     }
 
     to {
-        background:#59ff5c;
-        transform:translatexy(0px);
+        background: #59ff5c;
+        transform: translatexy(0px);
     }
 }
 
 @keyframes slidedown {
-    from{
-        transform:scaley(0);
+    from {
+        transform: scaley(0);
     }
 
-    10%{
+    10% {
         transform: scaley(1);
     }
-    90%{
+
+    90% {
         transform: scaley(1);
     }
 

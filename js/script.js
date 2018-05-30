@@ -230,7 +230,6 @@ function miss(){
     setTimeout(function(){
         reverseFlip();
 
-        //add click event
         $('#game-table').on('click','.card-cover',function(ev){
         cardClick(ev);
         });
@@ -296,7 +295,6 @@ function cardClick(ev){
             $('#score').text(game.score);
         }
 
-        //remove click event
         $('#game-table').off('click','.card-cover');
 
         if($(`#${game.match[0]}`).attr('data-card') != $(`#${game.match[1]}`).attr('data-card')){

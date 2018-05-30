@@ -26,7 +26,7 @@ body{
     box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
     padding:5px;
     margin: 5px;
-    
+
 }
 
 .button:hover {
@@ -135,7 +135,7 @@ body{
 
 /* GAME SECTION */
 
-#gameboard{
+#game-board{
     background: linear-gradient(130deg,#192f47 20%,#145359 60%,#16929e);
     width:100%;
     font-family : 'Bowlby One SC', cursive;
@@ -339,7 +339,7 @@ body{
 }
 
 @keyframes slidedown {
-    from{        
+    from{
         transform:scaley(0);
     }
 

@@ -38,7 +38,8 @@ function fillBoard(template){
     
     gameBoard.append(frag);
 
-    $('.card').css({width:`${60/w}vw`,height:`${60/h}vh`});
+    $('.card').css({width:`${60/w}vw`,height:`${60/h}vh`,'font-size':``});
+    setFont();
 }
 
 
@@ -247,7 +248,6 @@ function match() {
 
         setTimeout(function(){
             variables.match = [];
-            console.log($('.unsolved').length)
 
             //game complete
             if($('.unsolved').length===0){
@@ -308,6 +308,25 @@ $(function() {
         cardClick(ev);
     });
 });
+
+
+function setFont(){
+    let cardHeight = Number($('.card').css('height').split('px')[0]);
+    let cardWidth = Number($('.card').css('width').split('px')[0]);
+    console.log(cardWidth);
+    console.log(cardHeight);
+
+    if(cardHeight < cardWidth){
+        $('.card').css('font-size',`${cardHeight-15}px`);
+    }else if(cardWidth < cardHeight){
+        $('.card').css('font-size',`${cardWidth-15}px`);
+    }
+    else{
+        $('.card').css('font-size',`${cardWidth-20}px`);
+        
+    }
+    // console.log($('.card').css('font-size'));
+}
 
 
 function events(){
@@ -409,6 +428,10 @@ function events(){
     $('#close-stats').click(function(ev){
         $('#stats-display-container').addClass('hide');
     });
+
+    $(window).resize(function(){
+        setFont();
+    })
 }
 
 // TODO README

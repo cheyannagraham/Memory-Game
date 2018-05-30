@@ -166,7 +166,6 @@ body{
 
 #table-container {
     width:100%;
-    /* overflow: auto; */
     display:flex;
     justify-content: center;
     align-items: center;
@@ -176,7 +175,8 @@ body{
     border-collapse:collapse;
     padding:10px;
     width:100%;
-    min-height: 40%;   
+    min-height: 40%;
+    font-size:1.5em;
 
 }
 
@@ -199,7 +199,7 @@ body{
     padding: 10px;
     border-radius:3px;
     box-shadow: 0px 4px 10px 0px rgb(27, 49, 51);
-    font-size: 3em;
+    /* font-size: 3em; */
     font-weight: bold;
     transition:transform 0.3s ease;
     cursor:pointer;

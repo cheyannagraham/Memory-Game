@@ -1,6 +1,6 @@
 @media screen and (max-width:360px){
     html {
-        font-size:0.8em;
+        /* font-size:0.8em; */
         
     }
 
@@ -10,7 +10,7 @@
 }
 
 
-@media screen and (min-width:650px){
+@media screen and (min-width:600px){
     html {
         font-size:1.2em;
        

@@ -4,11 +4,11 @@ let variables = {
     time : '00:00',
     moves : 0,
     games : 0,
-    score : '***',
+    score : '\u2605\u2605\u2605',
     boardSize : 4,
     boardDim : '2x2',
     stats : [],
-    match : []
+    match : [],
 }
 
 
@@ -140,7 +140,7 @@ function gamePlay(){
     variables.time = '00:00';
     variables.turns = 0;
     variables.moves = 0;
-    variables.score = '***';
+    variables.score = '\u2605\u2605\u2605';
 
     setVars();
     createBoard();
@@ -275,15 +275,15 @@ function cardClick(ev){
 
             //score ratings
         if (variables.moves/variables.boardSize <= 0.75){
-            variables.score =('***');
+            variables.score =('\u2605\u2605\u2605');
             $('#score').text(variables.score);
         
         }else if (variables.moves > variables.boardSize){
-            variables.score =('*');
+            variables.score =('\u2605');
             $('#score').text(variables.score);
         
         }else {
-            variables.score =('**');
+            variables.score =('\u2605\u2605');
             $('#score').text(variables.score);
         }
 
@@ -325,7 +325,6 @@ function setFont(){
         $('.card').css('font-size',`${cardWidth-20}px`);
         
     }
-    // console.log($('.card').css('font-size'));
 }
 
 
@@ -433,9 +432,3 @@ function events(){
         setFont();
     })
 }
-
-// TODO README
-
-//media queries
-// game save confirmation
-

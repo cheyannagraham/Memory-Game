@@ -155,6 +155,7 @@ function setVars() {
     $('#moves').text(variables.moves);
     $('#games').text(variables.games);
     $('#score').text(variables.score);
+    console.log("vars",variables.match);
 }
 
 
@@ -268,8 +269,11 @@ function match() {
 function cardClick(ev){
     variables.match.push($(ev.target).prev('.card-face').attr('id'));
     flip(ev);
+    console.log("click",variables.match)
+    
 
     if(variables.match.length === 2){
+        console.log("match",variables.match)
         variables.moves++;
         $('#moves').text(variables.moves);
 
@@ -313,8 +317,6 @@ $(function() {
 function setFont(){
     let cardHeight = Number($('.card').css('height').split('px')[0]);
     let cardWidth = Number($('.card').css('width').split('px')[0]);
-    console.log(cardWidth);
-    console.log(cardHeight);
 
     if(cardHeight < cardWidth){
         $('.card').css('font-size',`${cardHeight-15}px`);
@@ -377,7 +379,9 @@ function events(){
     $('#save-game').click(function(ev){
         localStorage.setItem('table',$('#game-table').html());
         localStorage.setItem('variables',JSON.stringify(variables));
+        console.log("save",variables.match)
         const saved = $('#saved-container')
+        
         setTimeout(function(){
             saved.addClass('slide-down');
             saved.removeClass('hide');
@@ -398,12 +402,9 @@ function events(){
 
         variables = JSON.parse(localStorage.getItem('variables'));
         variables.timerStart = false;
+        console.log("load",variables.match)
         
         setVars();
-
-        $('#game-table').on('click','.card-cover',function(ev){
-            cardClick(ev);
-        });
 
         $('table').one('click',timer);
     });

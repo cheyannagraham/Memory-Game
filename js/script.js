@@ -367,6 +367,8 @@ function events(){
         $('#restart-container').toggleClass('hide'); 
         variables.stats = [];
         variables.games = 0;
+        variables.boardSize= 4;
+        
         gamePlay();
     });
 

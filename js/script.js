@@ -38,13 +38,14 @@ function fillBoard(template){
 
     gameBoard.append(frag);
 
+    //set card width size according to # of cards
     $('.card').css({width:`${60/w}vw`,height:`${60/h}vh`,'font-size':``});
     setFont();
 }
 
 
 function findRC(){
-    //get rows & columns
+    //find best width x height ratio
     const tSize = game.boardSize;
     const sqrt = Math.sqrt(tSize);
 
@@ -72,9 +73,10 @@ function createBoard(){
     let boardTemplate = [];
 
     for( let i=0; i < matches; i++){
-            boardTemplate.push([color[randomNumber(color.length)],sym[randomNumber(sym.length)]]);
+        //pick random combo of color/sym
+        boardTemplate.push([color[randomNumber(color.length)],sym[randomNumber(sym.length)]]);
     }
-
+    //creates 2 of every card
     boardTemplate.push(...boardTemplate);
     fillBoard(shuffleBoard(boardTemplate));
 }
@@ -86,8 +88,8 @@ function shuffleBoard(boardTemplate){
 
     for(let i = 0; i < len; i++){
         let randNum=randomNumber(boardTemplate.length);
-            shuffled.push(boardTemplate[randNum]);
-            boardTemplate.splice(randNum,1);
+        shuffled.push(boardTemplate[randNum]);
+        boardTemplate.splice(randNum,1);
     }
 
     return shuffled;
@@ -101,16 +103,17 @@ function randomNumber(m) {
 
 
 function flip(ev){
-        $(ev.target).css('transform','scalex(0)');
+    // flip animation
+    $(ev.target).css('transform','scalex(0)');
+
+    setTimeout(function(){
+        $(ev.target).addClass('hide');
+        $(ev.target).prev('.card').removeClass('hide');
 
         setTimeout(function(){
-          $(ev.target).addClass('hide');
-          $(ev.target).prev('.card').removeClass('hide');
-
-          setTimeout(function(){
-            $(ev.target).prev('.card').css('transform','scalex(1)');
-          },50);
-        },300);
+        $(ev.target).prev('.card').css('transform','scalex(1)');
+        },50);
+    },300);
 }
 
 
@@ -131,6 +134,7 @@ function reverseFlip(){
 
 
 function gamePlay(){
+    //reset variables for new game
     game.timerStart = false;
     game.pair = [];
     game.match = [];
@@ -279,7 +283,6 @@ function cardClick(ev){
         game.moves++;
         $('#moves').text(game.moves);
 
-            //score ratings
         if (game.moves/game.boardSize <= 0.75){
             game.score =('\u2605\u2605\u2605');
             $('#score').text(game.score);
@@ -298,9 +301,8 @@ function cardClick(ev){
 
         if($(`#${game.match[0]}`).attr('data-card') != $(`#${game.match[1]}`).attr('data-card')){
             miss();
-        }
 
-        else if ($(`#${game.match[0]}`).attr('data-card') === $(`#${game.match[1]}`).attr('data-card')){
+        }else if ($(`#${game.match[0]}`).attr('data-card') === $(`#${game.match[1]}`).attr('data-card')){
             match();
         }
     }
@@ -325,10 +327,9 @@ function setFont(){
 
     }else if(cardWidth < cardHeight){
         $('.card').css('font-size',`${cardWidth-15}px`);
-    }
 
-    else{
-        $('.card').css('font-size',`${cardWidth-20}px`);
+    }else{
+        $('.card').css('font-size',`${cardHeight-25}px`);
     }
 }
 
@@ -371,7 +372,6 @@ function events(){
         game.stats = [];
         game.games = 0;
         game.boardSize= 4;
-
         gamePlay();
     });
 

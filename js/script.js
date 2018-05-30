@@ -1,4 +1,4 @@
-let variables = {
+let game = {
     timerStart : false,
     seconds : 1,
     time : '00:00',
@@ -22,8 +22,7 @@ function fillBoard(template){
     const w = Math.min(r,c);
     const h = Math.max(r,c);
 
-    variables.boardDim = `${h}x${w}`;
-    $('#board-dim').text(variables.boardDim);
+    game.boardDim);
     
     for(let i=0; i < h; i++){
         const tr =$(document.createElement('tr'));
@@ -45,7 +44,7 @@ function fillBoard(template){
 
 function findRC(){
     //get rows & columns
-    const tSize = variables.boardSize;
+    const tSize = game.boardSize;
     const sqrt = Math.sqrt(tSize);
         
     if(tSize % sqrt === 0){
@@ -66,7 +65,7 @@ function findRC(){
 
 
 function createBoard(){
-    let matches =variables.boardSize/2;
+    let matches =game.boardSize/2;
     let color ='gray #ceb40e brown blue green red purple magenta orange black'.split(' ');
     let sym = '! @ # $ % " \' ^ & * = + - _ ( ) { } < > ~ / \\ | [ ] ? ; . , :'.split(' ');
     let boardTemplate = [];
@@ -116,7 +115,7 @@ function flip(ev){
 
 function reverseFlip(){
 
-    for (let card of variables.match){
+    for (let card of game.match){
         setTimeout(function(){
             $(`#${card}`).css('transform','scalex(0)');
 
@@ -127,20 +126,20 @@ function reverseFlip(){
             },300);
         },1200);
     }
-    variables.match = [];
+    game.match = [];
 }
 
 
 function gamePlay(){
-    variables.timerStart = false;
-    variables.pair = [];
-    variables.match = [];
-    variables.turns = 0;
-    variables.seconds = 1;
-    variables.time = '00:00';
-    variables.turns = 0;
-    variables.moves = 0;
-    variables.score = '\u2605\u2605\u2605';
+    game.timerStart = false;
+    game.pair = [];
+    game.match = [];
+    game.turns = 0;
+    game.seconds = 1;
+    game.time = '00:00';
+    game.turns = 0;
+    game.moves = 0;
+    game.score = '\u2605\u2605\u2605';
 
     setVars();
     createBoard();
@@ -149,33 +148,33 @@ function gamePlay(){
 
 
 function setVars() {
-    $('#seconds').text(variables.seconds);
-    $('#timer').text(variables.time);
-    $('#turns').text(variables.turns);
-    $('#moves').text(variables.moves);
-    $('#games').text(variables.games);
-    $('#score').text(variables.score);
-    console.log("vars",variables.match);
+    $('#seconds').text(game.seconds);
+    $('#timer').text(game.time);
+    $('#turns').text(game.turns);
+    $('#moves').text(game.moves);
+    $('#games').text(game.games);
+    $('#score').text(game.score);
+    console.log("vars",game.match);
 }
 
 
 function timer(){
     const timer = window.setInterval(time, 1000);
-    let count = variables.seconds;
-    variables.timerStart=true;
+    let count = game.seconds;
+    game.timerStart=true;
     let t = new Date();
 
     function time() {
-        if(!variables.timerStart){
+        if(!game.timerStart){
             window.clearInterval(timer);
         }
         else {
             t.setSeconds(count);
             t.setMinutes(count/60);
-            variables.time = `${t.getMinutes().toLocaleString('en-us',{minimumIntegerDigits:2})}:${t.getSeconds().toLocaleString('en-us',{minimumIntegerDigits:2})}`; 
-            $('#timer').text(variables.time);
+            game.time = `${t.getMinutes().toLocaleString('en-us',{minimumIntegerDigits:2})}:${t.getSeconds().toLocaleString('en-us',{minimumIntegerDigits:2})}`; 
+            $('#timer').text(game.time);
             count ++;
-            variables.seconds = count;
+            game.seconds = count;
         }
     }
 }
@@ -183,9 +182,9 @@ function timer(){
 
 function replay(){
     $('#replay-container').removeClass('hide');
-    $('#replay-score').text(variables.score);
-    $('#replay-time').text(variables.time);
-    $('#replay-moves').text(variables.moves);
+    $('#replay-score').text(game.score);
+    $('#replay-time').text(game.time);
+    $('#replay-moves').text(game.moves);
 }
 
 
@@ -195,9 +194,7 @@ function showStats(){
     tbody.empty();
 
     let frag = $(document.createDocumentFragment());
-    console.log(variables.stats);
-
-    variables.stats.forEach(function(stat){
+    console.log(game.stats.forEach(function(stat){
         const tr = document.createElement('tr');
         $(tr).addClass('stat-row')
         stat.forEach(function(s){
@@ -211,7 +208,7 @@ function showStats(){
 
 
 function miss(){
-    variables.match.forEach(function(card){
+    game.match.forEach(function(card){
     $(`#${card}`).addClass('animate');
     });
 
@@ -235,30 +232,7 @@ function miss(){
 
 
 function match() {
-    variables.match.forEach(function(card){
-        $(`#${card}`).addClass('animate');
-        });
-    
-        setTimeout(function(){
-            $('.animate').addClass('match-animate');
-            $('.animate').css({'color':'#424d4f','background': '#59ff5c'});
-        },500);
-    
-        setTimeout(function(){
-            variables.match.forEach(function (card){
-                $(`#${card}`).removeClass('animate match-animate unsolved');
-            });
-        },800);
-
-        setTimeout(function(){
-            variables.match = [];
-
-            //game complete
-            if($('.unsolved').length===0){
-                replay();
-                variables.games++;
-                variables.stats.push([variables.time,variables.score,variables.moves,variables.boardDim])
-                variables.timerStart=false;
+    game.timerStart=false;
                 $('#games').text(variables.games);
             }
 

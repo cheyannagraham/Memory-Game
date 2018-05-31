@@ -60,6 +60,10 @@ Increase difficulty by adding more cards. Vise Versa.
 The score is based on the number of moves made to solve the game. 
 Your score decreases as your number of moves increase. 
 
+### Notes
+
+This game is optimized for Chrome Browser.
+
 ### Dependencies
 
 This game uses [jQuery](https://jquery.com/)

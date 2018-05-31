@@ -190,12 +190,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding:10px;
 }
 
 #game-table {
     border-collapse: collapse;
-    padding: 10px;
+    margin:10px 10px 15px 5px;
     width: 100%;
     min-height:65vh;
     font-size: 1.5em;

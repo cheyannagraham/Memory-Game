@@ -37,7 +37,7 @@ Restarting the current game will reset:
 * Time
 * Moves
 
-Games played and prev stats will not be cleared.
+Games played and stat history will not be cleared.
 
 Starting the game over will clear everything. It's the same
 as refreshing the page. 
@@ -53,7 +53,7 @@ game option. Upon loading the saved game, the stats will be restored.
 
 ## Level Up/Down
 
-Increase difficulty by adding more cards. Vise Versa
+Increase difficulty by adding more cards. Vise Versa.
 
 ## Score
 

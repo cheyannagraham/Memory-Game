@@ -1,3 +1,4 @@
+// global game variables
 let game = {
     timerStart : false,
     seconds : 1,
@@ -11,7 +12,7 @@ let game = {
     match : [],
 }
 
-
+//create table and make cards according to template
 function fillBoard(template){
     let gameBoard=$('#game-table');
     let frag = $(document.createDocumentFragment());
@@ -43,9 +44,8 @@ function fillBoard(template){
     setFont();
 }
 
-
+//find best width x height ratio for table
 function findRC(){
-    //find best width x height ratio
     const tSize = game.boardSize;
     const sqrt = Math.sqrt(tSize);
 
@@ -65,7 +65,7 @@ function findRC(){
     }
 }
 
-
+//randomly pick color/sym combo and push to array for board template
 function createBoard(){
     let matches =game.boardSize/2;
     let color ='gray #ceb40e brown blue green red purple magenta orange black'.split(' ');
@@ -81,7 +81,7 @@ function createBoard(){
     fillBoard(shuffleBoard(boardTemplate));
 }
 
-
+//shuffle template
 function shuffleBoard(boardTemplate){
     let shuffled = [];
     const len = boardTemplate.length;
@@ -95,15 +95,14 @@ function shuffleBoard(boardTemplate){
     return shuffled;
 }
 
-
+//return random number
 function randomNumber(m) {
     //helper code (2018-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random)
     return Math.floor(Math.random() * Math.floor(m));
 }
 
-
+// flip animation
 function flip(ev){
-    // flip animation
     $(ev.target).css('transform','scalex(0)');
 
     setTimeout(function(){
@@ -116,7 +115,7 @@ function flip(ev){
     },300);
 }
 
-
+//reverse flip animation
 function reverseFlip(){
     for (let card of game.match){
         setTimeout(function(){
@@ -132,9 +131,8 @@ function reverseFlip(){
     game.match = [];
 }
 
-
+//reset variables for new game
 function gamePlay(){
-    //reset variables for new game
     game.timerStart = false;
     game.pair = [];
     game.match = [];
@@ -150,7 +148,7 @@ function gamePlay(){
     $('table').one('click',timer);
 }
 
-
+//display game data in html elements
 function setVars() {
     $('#seconds').text(game.seconds);
     $('#timer').text(game.time);
@@ -183,7 +181,7 @@ function timer(){
     }
 }
 
-
+//show and populate replay container
 function replay(){
     $('#replay-container').removeClass('hide');
     $('#replay-score').text(game.score);
@@ -191,7 +189,7 @@ function replay(){
     $('#replay-moves').text(game.moves);
 }
 
-
+// show and populate stats container
 function showStats(){
     $('#stats-display-container').removeClass('hide');
     let tbody = $('#stats-table-body');
@@ -213,7 +211,7 @@ function showStats(){
     tbody.append(frag);
 }
 
-
+//miss match animation
 function miss(){
     game.match.forEach(function(card){
         $(`#${card}`).addClass('animate');
@@ -237,7 +235,7 @@ function miss(){
     },100);
 }
 
-
+//correct match animation
 function match() {
     game.match.forEach(function(card){
         $(`#${card}`).addClass('animate');
@@ -273,7 +271,7 @@ function match() {
     },1000);
 }
 
-
+//control the game flow
 function cardClick(ev){
     game.match.push($(ev.target).prev('.card-face').attr('id'));
     flip(ev);
@@ -315,7 +313,7 @@ $(function() {
     });
 });
 
-
+//adust font size of card based on height/width of card
 function setFont(){
     let cardHeight = Number($('.card').css('height').split('px')[0]);
     let cardWidth = Number($('.card').css('width').split('px')[0]);
@@ -331,7 +329,7 @@ function setFont(){
     }
 }
 
-
+//event handleres
 function events(){
     $('#replay-button').click(function(ev){
         gamePlay();

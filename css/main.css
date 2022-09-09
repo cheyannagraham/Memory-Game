@@ -66,10 +66,11 @@ body {
     min-height: 15vh;
 }
 
-.curly-brace {
-    font-size: 1.2em;
+.header-symbol {
+    font-size: 1.5em;
     color: var(--yellow);
-    margin: 10px;
+    margin: 0 20px;
+    /* padding: 50px; */
 }
 
 #hr {
@@ -92,7 +93,7 @@ body {
 
 
 #stats-container {
-    width: 85%;
+    width: 95%;
     margin: auto;
     padding: 10px 0;
     color: var(--dgreen);
@@ -129,7 +130,6 @@ body {
     transform: scaley(0);
     transition: transform 0.2s ease;
     border: 2px solid var(--dgreen);
-    ;
 }
 
 #buttons-list {

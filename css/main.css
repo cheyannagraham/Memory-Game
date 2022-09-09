@@ -275,6 +275,7 @@ body {
     text-align: center;
     color: var(--dgreen);
     font-size: 1em;
+    z-index: 500;
 }
 
 #restart-text {

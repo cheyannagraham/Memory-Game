@@ -395,17 +395,18 @@ function events() {
 
 
     $('#load-game').click(function (ev) {
-        const table = $('#game-table');
-
-        table.empty();
-        table.html(localStorage.getItem('table'));
-
-        game = JSON.parse(localStorage.getItem('game'));
-        game.timerStart = false;
-
-        setVars();
-
-        $('table').one('click', timer);
+        savedGame = JSON.parse(localStorage.getItem('game'));
+        if (savedGame) {
+            game = savedGame;
+            const table = $('#game-table');
+            table.empty();
+            table.html(localStorage.getItem('table'));
+            game.timerStart = false;
+            setVars();
+            $('table').one('click', timer);
+        } else {
+            alert("Sorry! No game data available.");
+        }
     });
 
 

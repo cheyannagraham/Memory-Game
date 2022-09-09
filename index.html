@@ -1,0 +1,115 @@
+<!doctype html>
+
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/media.css">
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Bowlby+One+SC" rel="stylesheet">
+        <!-- (Google Fonts 2018 https://fonts.google.com/) -->
+        <script src="js/script.js"></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>Memory Symbols</title>
+    </head>
+
+    <body id="body">
+        <header id="main-header-container">
+            <h1 id="main-header" class="header" >
+                <span class="curly-brace">{}</span>
+                    MEMORY
+                 <span class="curly-brace">{}</span>
+            </h1>
+        </header>
+
+        <hr id = "hr">
+
+        <main id="content">
+            <section id="stats-container">
+
+                <h2 class="header" id="stats-header">Stats</h2>
+
+                <div id="stats">
+                    <p class="stat-item"><span class="stats-label">Score: </span><span id="score"></span></p>
+                    <p class="stat-item"><span class="stats-label" >Time: </span><span id="timer"></span></p>
+                    <p class="stat-item"><span class="stats-label">Games: </span><span id="games">0</span></p>
+                    <p class="stat-item"><span class="stats-label">Board: </span><span id="board-dim"></span></p>
+                    <p class="stat-item"><span class="stats-label">Moves: </span><span id="moves"></span></p>
+                </div>
+
+            </section>
+
+            <aside id="main-buttons-container" class="hide">
+                <ul id="buttons-list">
+                    <li><button class="button level-up-button main-button">Level Up</button></li>
+                    <li><button class="button main-button" id="level-down-button">Level Down</button></li>
+                    <li><button class="button main-button" id ="restart-button">Restart</button></li>
+                    <li><button class="button main-button" id ="show-stats">MyStats</button></li>
+                    <li><button class="button main-button" id ="save-game">Save Game</button></li>
+                    <li><button class="button main-button" id ="load-game">Load Game</button></li>
+                    <li><button class="button main-button" id ="close">Close</button></li>
+                </ul>
+            </aside>
+
+            <section id="game-board">
+                <button id="menu-button-icon" class="">&#9776;</button>
+
+                <aside id="saved-container" class="hide">
+                    <p id="saved-display">SAVED!</p>
+                </aside>
+
+                <div id="table-container">
+                    <table id="game-table" data-size="4"></table>
+                </div>
+
+            </section>
+
+        </main>
+
+            <!-- HIDDEN CONTENT -->
+
+        <aside id="replay-container" class="hide prompt">
+            <h1 class="header" >Winner!</h1>
+                <p>Score: <span id="replay-score"></span></p>
+                <p>Time: <span id="replay-time"></span></p>
+                <p>Moves: <span id="replay-moves"></span></p>
+                <button class="button" id="replay-button">Play Again!</button>
+                <button class="button level-up-button">Level Up!</button>
+        </aside>
+
+        <aside id = "restart-container" class="hide prompt">
+            <h2 class="header" >Restart</h2>
+
+            <p id="restart-text">
+                Would you like to restart the current game or
+                start over<small>(clear streak)?</small>
+            </p>
+
+            <button class="button" id="restart-game-button">Current Game</button>
+            <button class="button" id="start-over-button">Start Over</button>
+            <button class="button" id="cancel-button">Cancel</button>
+        </aside>
+
+        <aside id="stats-display-container" class="hide prompt">
+            <h2 class="header" >Stats</h2>
+
+            <div id="stats-table-container">
+                <table id= "stats-table">
+                    <thead>
+                        <tr id="table-header">
+                            <th class="stats-table-label">Time</th>
+                            <th class="stats-table-label">Score</th>
+                            <th class="stats-table-label">Moves</th>
+                            <th class="stats-table-label">Board</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="stats-table-body"></tbody>
+                </table>
+
+            </div>
+
+            <button class="button" id="close-stats">Close</button>
+        </aside>
+    </body>
+</html>

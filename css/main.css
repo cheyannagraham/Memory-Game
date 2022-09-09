@@ -276,6 +276,7 @@ body {
     color: var(--dgreen);
     font-size: 1em;
     z-index: 500;
+    max-width: 500px;
 }
 
 #restart-text {

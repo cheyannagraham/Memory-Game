@@ -101,6 +101,11 @@ body {
 
 }
 
+.align-flex {
+    display: flex;
+    align-items: center;
+}
+
 #stats-header {
     color: var(--dgreen);
 }
@@ -167,9 +172,8 @@ body {
     background: none;
     border: none;
     font-size: 2em;
-    padding: 15px;
     cursor: pointer;
-    color: var(--cyan);
+    color: var(--dgreen);
 }
 
 

@@ -28,11 +28,31 @@
 
     <main id="content">
         <section id="stats-container">
+            <div class="align-flex">
+                <h2 class="header" id="stats-header">STATS</h2>
+                <button id="menu-button-icon" class="">&#9776;</button>
+            </div>
 
-            <h2 class="header" id="stats-header">STATS</h2>
+            <!-- Hidden -->
+
+            <aside id="main-buttons-container" class="hide">
+                <ul id="buttons-list">
+                    <li><button class="button level-up-button main-button">Level Up</button></li>
+                    <li><button class="button main-button" id="level-down-button">Level Down</button></li>
+                    <li><button class="button main-button" id="restart-button">Restart</button></li>
+                    <li><button class="button main-button" id="show-stats">MyStats</button></li>
+                    <li><button class="button main-button" id="save-game">Save Game</button></li>
+                    <li><button class="button main-button" id="load-game">Load Game</button></li>
+                    <li><button class="button main-button" id="close">Close</button></li>
+                </ul>
+            </aside>
+            <!-- End of hidden -->
 
             <div id="stats">
-                <p class="stat-item"><span class="stats-label">Score: </span><span id="score"></span></p>
+                <div class="align-flex">
+                    <p class="stat-item"><span class="stats-label">Score:</p>
+                    </span><span id="score"></span>
+                </div>
                 <p class="stat-item"><span class="stats-label">Time: </span><span id="timer"></span></p>
                 <p class="stat-item"><span class="stats-label">Games: </span><span id="games">0</span></p>
                 <p class="stat-item"><span class="stats-label">Board: </span><span id="board-dim"></span></p>
@@ -41,20 +61,8 @@
 
         </section>
 
-        <aside id="main-buttons-container" class="hide">
-            <ul id="buttons-list">
-                <li><button class="button level-up-button main-button">Level Up</button></li>
-                <li><button class="button main-button" id="level-down-button">Level Down</button></li>
-                <li><button class="button main-button" id="restart-button">Restart</button></li>
-                <li><button class="button main-button" id="show-stats">MyStats</button></li>
-                <li><button class="button main-button" id="save-game">Save Game</button></li>
-                <li><button class="button main-button" id="load-game">Load Game</button></li>
-                <li><button class="button main-button" id="close">Close</button></li>
-            </ul>
-        </aside>
 
         <section id="game-board">
-            <button id="menu-button-icon" class="">&#9776;</button>
 
             <aside id="saved-container" class="hide">
                 <p id="saved-display">SAVED!</p>

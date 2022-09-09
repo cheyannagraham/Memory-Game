@@ -1,32 +1,41 @@
 /* WHOLE DOCUMENT */
 
+:root {
+    --yellow: #e5ca1d;
+    --cyan: #4bd1a7;
+    --dgreen: #266368;
+}
 
 html,
 body {
     width: 100%;
+
 }
 
-*  {
+* {
+    box-sizing: content-box;
     padding: 0;
     margin: 0;
     font: 1em 'Alfa Slab One', cursive;
+    letter-spacing: .1rem;
+
 }
 
 .header {
     width: 100%;
     text-align: center;
-    font-size: 1.4em;
-    color: #59ff5c;
+    color: var(--cyan);
     margin: 10px 0;
+    font-size: 1.5em;
 }
 
 .button {
-    color: #126319;
+    color: var(--dgreen);
     font-size: 0.85em;
     border: none;
     cursor: pointer;
     border-radius: 5px;
-    box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.75);
     padding: 5px;
     margin: 5px;
 
@@ -34,7 +43,7 @@ body {
 
 .button:hover {
     font-weight: bold;
-    border: 1px solid #e5ca1d;
+    border: 1px solid var(--yellow);
 }
 
 
@@ -48,25 +57,25 @@ body {
 #main-header {
     width: 100%;
     font-size: 2.8em;
-    color: #4bd1a7;
-    background: #2b4959;
+    color: var(--cyan);
     margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 10px 0;
-    min-height:15vh;
+    min-height: 15vh;
 }
 
 .curly-brace {
-    font-size: 1.5em;
-    color: #e5ca1d;
+    font-size: 1.2em;
+    color: var(--yellow);
+    margin: 10px;
 }
 
 #hr {
     width: 100%;
-    height: 15px;
-    background: #e5ca1d;
+    height: 5px;
+    background: var(--yellow);
     border: none;
 }
 
@@ -83,16 +92,16 @@ body {
 
 
 #stats-container {
-    width: 100%;
-    font-size: 0.85em;
+    width: 85%;
+    margin: auto;
     padding: 10px 0;
-    background: #f0f4ef;
-    color: #126319;
-    min-height:10vh;
+    color: var(--dgreen);
+    min-height: 10vh;
+
 }
 
 #stats-header {
-    color: #126319;
+    color: var(--dgreen);
 }
 
 #stats {
@@ -109,7 +118,7 @@ body {
 }
 
 #score {
-    color: #ddc618;
+    color: var(--yellow);
     font-size: 2em;
 }
 
@@ -119,7 +128,8 @@ body {
 #main-buttons-container {
     transform: scaley(0);
     transition: transform 0.2s ease;
-    background: #f0f4ef;
+    border: 2px solid var(--dgreen);
+    ;
 }
 
 #buttons-list {
@@ -134,12 +144,12 @@ body {
     margin: 0;
     border-radius: 0;
     cursor: pointer;
-    color: #254f59;
+    color: 266368;
 }
 
 .main-button:hover {
-    background: #266368;
-    color: #d6ffd6;
+    background: var(--dgreen);
+    color: var(--cyan);
     font-weight: normal;
 }
 
@@ -148,9 +158,8 @@ body {
 
 
 #game-board {
-    background: linear-gradient(130deg,#192f47 20%,#145359 60%,#16929e);
     width: 100%;
-    font-family : 'Bowlby One SC', cursive;
+    font-family: 'Bowlby One SC', cursive;
 
 }
 
@@ -160,7 +169,7 @@ body {
     font-size: 2em;
     padding: 15px;
     cursor: pointer;
-    color: #4bd1a7;
+    color: var(--cyan);
 }
 
 
@@ -169,7 +178,7 @@ body {
 
 #saved-container {
     transform: scaley(0);
-    background: #e5ca1d;
+    background: var(--yellow);
     text-align: center;
     padding: 3px;
     margin: 3px;
@@ -190,13 +199,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height:65vh;
+    min-height: 65vh;
 
 }
 
 #game-table {
     border-collapse: collapse;
-    margin:10px 10px 15px 5px;
+    margin: 10px 10px 15px 5px;
     width: 100%;
     font-size: 1.5em;
 
@@ -213,11 +222,11 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 40px;
-    min-height: 40px;
+    min-width: 30px;
+    min-height: 30px;
     max-width: 150px;
     max-height: 150px;
-    margin: 5px;
+    margin: 10px;
     padding: 10px;
     border-radius: 3px;
     box-shadow: 0px 4px 10px 0px rgb(27, 49, 51);
@@ -227,11 +236,11 @@ body {
 }
 
 .card-cover {
-    background: #4bd1a7;
+    background: var(--cyan);
 }
 
 .card-cover:hover {
-    background: radial-gradient(#f0f4ef,#4bd1a7);
+    background: radial-gradient(#f0f4ef, var(--cyan));
 }
 
 .card-face {
@@ -255,10 +264,10 @@ body {
     right: 0;
     margin-left: auto;
     margin-right: auto;
-    background: #296266;
-    box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+    background: white;
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.75);
     border-radius: 5px;
-    border: 1px solid #e5ca1d;
+    border: 1px solid var(--dgreen);
     padding: 30px;
     text-align: center;
     color: #f0f4ef;
@@ -302,7 +311,7 @@ body {
 
 @keyframes miss {
     from {
-      transform: translatex(0px);
+        transform: translatex(0px);
     }
 
     25% {
@@ -324,9 +333,9 @@ body {
     }
 
     to {
-      transform: translatex(0px);
+        transform: translatex(0px);
     }
-   }
+}
 
 @keyframes match {
     from {
@@ -334,22 +343,22 @@ body {
     }
 
     25% {
-        background: #59ff5c;
+        background: var(--cyan);
         transform: translatey(10px);
     }
 
     50% {
-        background: #59ff5c;
+        background: var(--cyan);
         transform: translatey(0px);
     }
 
     75% {
-        background: #59ff5c;
+        background: var(--cyan);
         transform: translatey(-10px);
     }
 
     to {
-        background: #59ff5c;
+        background: var(--cyan);
         transform: translatexy(0px);
     }
 }

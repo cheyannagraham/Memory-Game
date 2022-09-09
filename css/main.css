@@ -4,6 +4,7 @@
     --yellow: #e5ca1d;
     --cyan: #4bd1a7;
     --dgreen: #266368;
+    --owhite: #ffff;
 }
 
 html,
@@ -16,7 +17,7 @@ body {
     box-sizing: content-box;
     padding: 0;
     margin: 0;
-    font: 1em 'Alfa Slab One', cursive;
+    /* font: 1em 'Alfa Slab One', cursive; */
     letter-spacing: .1rem;
 
 }
@@ -30,20 +31,20 @@ body {
 }
 
 .button {
-    color: var(--dgreen);
+    color: var(--owhite);
+    background: var(--dgreen);
     font-size: 0.85em;
     border: none;
     cursor: pointer;
     border-radius: 5px;
     box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.75);
-    padding: 5px;
-    margin: 5px;
+    padding: 10px;
+    margin: 10px;
 
 }
 
 .button:hover {
-    font-weight: bold;
-    border: 1px solid var(--yellow);
+    border: 2px solid var(--yellow);
 }
 
 
@@ -244,12 +245,12 @@ body {
 }
 
 .card-cover:hover {
-    background: radial-gradient(#f0f4ef, var(--cyan));
+    background: radial-gradient(var(--owhite), var(--cyan));
 }
 
 .card-face {
     transform: scalex(0);
-    background: #f0f4ef;
+    background: var(--owhite);
 }
 
 .hide {
@@ -268,18 +269,24 @@ body {
     right: 0;
     margin-left: auto;
     margin-right: auto;
-    background: white;
+    background: var(--owhite);
     box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.75);
     border-radius: 5px;
-    border: 1px solid var(--dgreen);
+    border: 1px solid var(--yellow);
     padding: 30px;
     text-align: center;
-    color: #f0f4ef;
+    color: var(--dgreen);
     font-size: 1em;
 }
 
 #restart-text {
     margin: 15px;
+}
+
+#replay-container p,
+th {
+    margin: 10px;
+    padding: 3px;
 }
 
 #stats-table-container {

@@ -17,7 +17,6 @@ body {
     box-sizing: content-box;
     padding: 0;
     margin: 0;
-    /* font: 1em 'Alfa Slab One', cursive; */
     letter-spacing: .1rem;
 
 }
@@ -71,7 +70,6 @@ body {
     font-size: 1.5em;
     color: var(--yellow);
     margin: 0 20px;
-    /* padding: 50px; */
 }
 
 #hr {
